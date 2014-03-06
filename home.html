@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	
+	function setBox() {
+		//widths
+		$('#box1').css('width','33.33%');
+		$('#box2').css('width','66.67%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','66.67%')
+		$('#box5').css('width','66.67%')
+		$('#box6').css('width','33.33%')
+		$('#box7').css('width','33.33%')
+		$('#box8').css('width','66.67%')
+		$('#box9').css('width','33.33%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b4h = $('#box4').height();
+		var b5h = $('#box5').height();
+		var b6h = $('#box6').height();
+		var b8h = $('#box8').height();
+
+		// pos
+		$('#box2').css('left','33.33%');
+		$('#box3').css('top',b1h+'px');
+		$('#box4').css('left','33.33%');
+		$('#box4').css('top',b2h+'px');
+		$('#box5').css('top',(b1h+b3h)+'px');
+		$('#box6').css('left','66.67%');
+		$('#box6').css('top',(b1h+b3h)+'px');
+		$('#box7').css('left','66.67%');
+		$('#box7').css('top',(b1h+b3h+b6h)+'px');
+		$('#box8').css('top',(b1h+b3h+b5h)+'px');
+		$('#box9').css('left','66.67%');
+		$('#box9').css('top',(b1h+b3h+b5h)+'px');
+		
+		contentH = b1h+b3h+b5h+b8h
+		$('#frch-footer').css('top', contentH+93)
+		
+		// init
+		if(isInit){
+			build();
+						
+		}	
+	}
+	
+	$(document).ready(function() {	
+		$('#frch-content').css('margin-top',0);
+	});
+	
+	$(window).resize(function() {
+		setBox();
+			
+	});
+
+</script>
+
+
+</head>
+
+<body>
+
+<div id="frch-content">
+	<div class="box" id="box1">
+    	<div class="overlay" onclick="location.href='#hospitality';">
+        	<div class="text">
+        		<h3>Personalizing the experience for every guest.</h3>
+                <h5>HOSPITALITY</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_sway2.jpg" />
+    </div>
+    <div class="box" id="box2">
+    	<div class="overlay" onclick="location.href='#retail';">
+        	<div class="text">
+        		<h3>Often the smallest details make all the difference.</h3>
+                <h5>LUXURY RETAIL</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/ret_liverpool_veracruz.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<div class="overlay" onclick="location.href='#hospitality';">
+        	<div class="text">
+        		<h3>Exquisite spaces invite you to relax and stay awhile.</h3>
+                <h5>HOSPITALITY</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+		<img src="_img/hosp_sway3.jpg" />
+    </div>
+    <div class="box" id="box4">
+    	<div class="overlay" onclick="location.href='#architecture';">
+        	<div class="text">
+        		<h3>Our strategic approach to planning creates meaningful and relevant connections.</h3>
+                <h5>MASTER PLANNING / ARCHITECTURE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_foxwoods.jpg" />
+    </div>
+    <div class="box" id="box5">
+    	<div class="overlay"  onclick="location.href='#architecture';">
+        	<div class="text">
+        		<h3>Vibrant public spaces have the power to transform communities.</h3>
+                <h5>MASTER PLANNING / ARCHITECTURE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_ovation.jpg" />
+    </div>
+    <div class="box" id="box6">
+    	<div class="overlay"  onclick="location.href='#retail';">
+        	<div class="text">
+        		<h3>We dare to dream with our eyes wide open.</h3>
+                <h5>LUXURY RETAIL</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_tiffany.jpg" />
+    </div>
+    <div class="box" id="box7">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_smallblock.jpg" />
+    </div>    
+    <div class="box" id="box8">
+    	<div class="overlay"  onclick="location.href='#food';">
+        	<div class="text">
+        		<h3>We live to craft extraordinary culinary experiences.</h3>
+                <h5>FOOD & BEVERAGE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_palate_monoco.jpg" />
+    </div>
+    <div class="box" id="box9">
+    	<div class="overlay"  onclick="location.href='#food';">
+        	<div class="text">
+        		<h3>Every detail is an opportunity to engage the senses.</h3>
+                <h5>FOOD & BEVERAGE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_westin_stmaarten.jpg" />
+    </div>
+    
+</div>
+
+</body>
+</html>

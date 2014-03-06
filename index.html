@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FRCH | Design Worldwide</title>
+
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" href="favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="FRCH">
+
+<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6616472/683384/css/fonts.css" />
+<link rel="stylesheet" href="_css/master.css" type="text/css" media="screen, print">
+<script type="text/javascript" src="_js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="_js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
+<script type="text/javascript" src="_js/is-mobile.js"></script>
+
+<link rel="stylesheet" href="_js/flexslider.css" type="text/css" media="screen">
+<script type="text/javascript" src="_js/jquery.flexslider-min.js"></script>
+
+
+<script type="text/javascript" src="_js/swfaddress/swfaddress.js"></script>
+
+<script type="text/javascript">
+
+	function handleChange(evt){
+
+		var pathName = evt.pathNames[0]
+		var navName = null;
+		
+		unNav();
+		
+		if (evt.pathNames[0]){
+			//load info page
+			loadContent(pathName+'.html')			
+			$('#nav-'+pathName).addClass('navselected');			
+
+		} else {
+			//load default page			
+			loadContent('home.html')
+		}
+		
+		
+	}
+	
+	function unNav() {
+		$('#mainnav').find('.navselected').removeClass('navselected');
+	}
+	
+	SWFAddress.addEventListener(SWFAddressEvent.CHANGE, handleChange);
+	
+</script>
+
+<script type="text/javascript">
+ /*
+  function logEvent(event) {
+      console.log(event.type);
+  }
+ 
+  window.applicationCache.addEventListener('checking',logEvent,false);
+  window.applicationCache.addEventListener('noupdate',logEvent,false);
+  window.applicationCache.addEventListener('downloading',logEvent,false);
+  window.applicationCache.addEventListener('cached',logEvent,false);
+  window.applicationCache.addEventListener('updateready',logEvent,false);
+  window.applicationCache.addEventListener('obsolete',logEvent,false);
+  window.applicationCache.addEventListener('error',logEvent,false);
+  */
+	
+</script>
+
+<script type="text/javascript">
+
+	var imagesLoad = 0;
+	var imagesLoad_arr = new Array ()
+	var isInit = true;
+	var screenH;
+	var screenW;
+	var contentH;
+
+	//-----------------------
+	// main pages
+	
+	function loadContent(target) {
+			$('#loader').show();
+			$('#frch-holder').hide();
+			$('#frch-footer').hide();
+			$('#frch-detail').hide();
+			$('#frch-holder').load(target, function() {	
+				//if(status=='success'){		
+					// Loaded			
+					$(this).show();
+					$('#frch-subnav').hide();	
+					$('#frch-subnav').slideDown(1000,'easeOutExpo');	
+					
+					// set subnav
+					$('#subnav').each(function() {	
+						$(this).find('a').click(function() {
+							$('.subnavselected').removeClass('subnavselected');
+							$(this).addClass('subnavselected');
+						})
+					});
+						
+					findImages();	
+				//} else {
+					//alert(status);	
+				//}
+			});
+	}
+	
+	function findImages() {
+		/// put all new page images in an array
+		imagesLoad = 0;
+		imagesLoad_arr = [];
+		$('#frch-content').find('img').each(function() {
+			imagesLoad_arr.push($(this).attr('src'));
+		})
+		// load all the images
+		loadNextImage('main');	
+	}
+	
+	function loadNextImage(source) {	
+		if(imagesLoad >= imagesLoad_arr.length) {			
+			// wait for all images to load then execute
+			$('#loader').hide();
+			
+			if(source == 'main'){
+				//$(window).resize();	
+				setBox();	
+			} else if (source == "detail") {
+				//$(window).resize();	
+				//setBox();
+	
+				// set gallery			
+				$('.flexslider').flexslider({
+					animation: "slide",
+					slideshow: false, 
+					animationLoop: false,
+					keyboardNav: true,
+					directionNav: false,
+					touch: true,
+					start: function() {
+					
+					},		
+				});
+				
+				
+				$('html, body').animate({ scrollTop: 0 }, 300);
+				$(window).resize();
+					
+				$('#frch-detail').css('opacity', 0);	
+				$('#frch-detail').show();
+				$('#frch-detail').animate({
+					opacity: 1
+				},250);	
+			}
+	
+		} else {
+			// load next image
+			/*
+			$('<img/>').attr('src').load(imagesLoad_arr[imagesLoad], function( response, status, xhr ) {
+				if(status=='success'){
+					imagesLoad++;
+					loadNextImage(source);
+				} else {
+					alert(status)
+				}
+			});
+			*/
+			$('<img/>').attr('src', imagesLoad_arr[imagesLoad]).load(function() {
+					
+				imagesLoad++;
+				loadNextImage(source);
+			});
+			
+		}
+	}
+	/*
+	function boxReset() {
+		$('.box').each(function() {	
+			$(this).width(0);
+			$(this).css('left','0px');
+			$(this).css('top','0px')
+		})	
+		alert(1);
+	}
+	*/
+	
+	function build() {
+		var i = 0;
+		var totalItems = $('.box').length;
+		var isChrome = navigator.userAgent.indexOf('Chrome') > -1;
+		var isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
+		var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
+		var isSafari = navigator.userAgent.indexOf('Safari') > -1;
+		
+		setTimeout(function() {
+			$('.box').each(function() {	
+				var overlay = $(this).children('.overlay')
+				$(this).mouseenter(function() {
+					overlay.css('opacity',0);
+					overlay.show();
+					overlay.stop().animate({
+						opacity: 1	
+					},300);
+				}).mouseleave(function() {
+					overlay.stop().animate({
+						opacity: 0
+					},300,function(){
+						$(this).hide();
+					});
+				});	
+				
+				$(this).css('z-index',i+100);
+				
+				/* fade */
+			
+				$(this).delay(i*150).animate({
+					opacity: 1				
+				},700);	
+				i++;	
+				
+				/* scale */
+				/*
+				var thisW = $(this).width();
+				var thisH = $(this).height();
+				var thisT = parseFloat($(this).css('top').slice(0, -2));
+				var thisL;	
+				
+				// safari and iPad use percentages, not pixels
+				if(isMobile){
+					thisL = (parseFloat($(this).css('left').slice(0, -1))/100)*screenW;
+				} else {
+					if (isSafari && !isChrome){
+						thisL = (parseFloat($(this).css('left').slice(0, -1))/100)*screenW;
+					} else {					
+						thisL = parseFloat($(this).css('left').slice(0, -2));
+					}
+				}
+				
+	
+				$(this).width(0);
+				$(this).height(0);
+				$(this).css('top',(thisT+(thisH/2))+'px');
+				$(this).css('left',(thisL+(thisW/2))+'px');
+				
+				$(this).show();
+				$(this).css('opacity',1);
+				$(this).delay(i*100).animate({
+					width: thisW,
+					height: thisH,
+					top: thisT+'px',
+					left: thisL+'px',
+				},1000,'easeOutExpo',function(){
+					$(this).each(function() {
+						$(this).height('auto');	
+					});
+				})
+				//alert(thisT);			
+				i++;
+				*/
+				
+				
+			});
+		}, 500);
+		
+		setTimeout(function(){
+			$('#frch-footer').css('top',$(document).height()-3);
+			$('#frch-footer').show();
+		},0);
+		
+		isInit = false;		
+	}
+	
+	//-----------------------
+	// detail pages
+	
+	function loadDetail(target) {
+		
+		$('#loader').show();
+		$('#frch-detail').hide();
+		$('#frch-detail').load(target, function(data) {			
+			// Loaded
+			findDetailImages();
+			/*
+			$('#loader').hide();			
+			$(this).css('opacity', 0);	
+			$(this).show();
+			$(this).animate({
+				opacity: 1
+			},250);
+			*/
+						
+		});
+	}
+	
+	function findDetailImages() {
+		/// put all new page images in an array
+		imagesLoad = 0;
+		imagesLoad_arr = [];
+		$('#frch-detail').find('img').each(function() {
+			imagesLoad_arr.push($(this).attr('src'));
+		})
+		// load all the images
+		loadNextImage('detail');
+	}
+	
+	function closeDetail() {
+		$('#frch-detail').fadeOut();
+		$('#subnav').find('.subnavselected').removeClass('subnavselected');
+	}
+	
+	//----------------------
+	// init
+
+	$(document).ready(function() {	
+		$(window).resize();
+		/*
+		window.addEventListener("orientationchange", function() {
+			// Announce the new orientation number
+			//alert(window.orientation);
+			$('body').scrollTop(0)
+		}, false);
+		*/
+			
+		$('#mainnav').each(function() {	
+			$(this).find('a').click(function() {
+				$('.navselected').removeClass('navselected');
+				$(this).addClass('navselected');
+			})
+		});
+		
+		$('#nav-home').click(function(){
+			$('.navselected').removeClass('navselected');
+		});
+		
+		$('.contact-name').click(function() {
+			$('.contact-name').fadeOut(500);
+			$('.contact-details').fadeIn(500);
+		})
+		$('.contact-details').click(function() {
+			$('.contact-name').fadeIn(500);
+			$('.contact-details').fadeOut(500);
+		});	
+	});
+	
+	$(window).resize(function() {
+		screenW = $(document).width();
+		screenH = $(document).height();
+		$('#frch-detail').height(screenH-125);
+		//alert($('#frch-content').height());
+	});
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="loader"></div>
+<div id="frch-detail">
+
+</div>
+
+<div id="frch-header">
+	<div id="frch-logo"><a id="nav-home" href="#"><img src="_img/logo_frch.png" alt="FRCH | Design Worldwide" /></a></div>
+    <div id="frch-tagline">
+    	<div class="contact-url"><a href="http://www.frch.com" target="_blank">FRCH.COM</a></div>
+    	<div class="contact-header">
+        	<div class="contact-name">CONTACT</div>
+            <div class="contact-details">JOHN DOE, (513) 241-3000, <a href="#">john.doe@frch.com</a></div>
+        </div>
+    	<span></span>
+        <div class="clear"></div> 
+        
+    </div>
+</div>
+<div id="frch-mainnav">
+	<ul id="mainnav">
+    	<li><a id="nav-retail" href="#retail">LUXURY RETAIL</a>
+        <li><a id="nav-hospitality" href="#hospitality">HOSPITALITY</a>
+        <li><a id="nav-architecture" href="#architecture">MASTER PLANNING/ARCHITECTURE</a>
+        <li><a id="nav-food" href="#food">FOOD & BEVERAGE</a>
+    </ul>    
+</div>
+<div id="frch-holder">
+	
+</div>
+
+<div id="frch-footer">
+	<div>CONTACT: JOHN DOE, (513) 241-3000, <a href="#">john.doe@frch.com</a></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	
+	function setBox() {
+		//widths
+		$('#box1').css('width','66.67%');
+		$('#box2').css('width','33.33%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','33.33%')
+		$('#box5').css('width','33.33%')
+		$('#box6').css('width','66.67%')
+		$('#box7').css('width','66.67%')
+		$('#box8').css('width','33.33%')
+		$('#box9').css('width','33.33%')
+		$('#box10').css('width','66.67%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b5h = $('#box5').height();
+		var b7h = $('#box7').height();
+		var b9h = $('#box9').height();
+		
+		// pos
+		$('#box2').css('left','66.67%');
+		$('#box3').css('left','66.67%');
+		$('#box3').css('top',b2h+'px');
+		$('#box4').css('left','66.67%');
+		$('#box4').css('top',(b2h+b3h)+'px');
+		$('#box5').css('top',b1h+'px');
+		$('#box6').css('left','33.33%');
+		$('#box6').css('top',b1h+'px');
+		$('#box7').css('top',(b1h+b5h)+'px');
+		$('#box8').css('top',(b1h+b5h)+'px');
+		$('#box8').css('left','66.67%');
+		$('#box9').css('top',(b1h+b5h+b7h)+'px');
+		$('#box10').css('left','33.33%');
+		$('#box10').css('top',(b1h+b5h+b7h)+'px');
+		
+		contentH = b1h+b5h+b7h+b9h
+		$('#frch-footer').css('top', contentH+123)	
+		
+		// init
+		if(isInit){
+			build();			
+		}
+	}
+	
+	$(window).resize(function() {
+		setBox();		
+	});
+
+</script>
+
+
+</head>
+
+<body>
+<div id="frch-subnav">
+	<ul id="subnav">
+    	<li><a href="javascript:void();" onclick="loadDetail('detail-liverpool-veracruz.html')">LIVERPOOL VERACRUZ</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-tiffany.html')">TIFFANY & CO.</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-hyundai-shinchon.html')">HYUNDAI</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-judith-leiber.html')">JUDITH LEIBER</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-mary-horton.html')">MARY HORTON</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-liverpool-dutyfree.html')">LIVERPOOL DUTY FREE</a></li>
+    </ul>  
+</div>
+<div id="frch-content">
+	<div class="box" id="box1">
+    	<div class="overlay" onclick="loadDetail('detail-liverpool-veracruz.html');" >
+        	<div class="text">
+            	<h3>A Lifestyle Destination</h3>
+        		<h5>LIVERPOOL VERACRUZ</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_liverpool_veracruz.jpg" />
+    </div>
+    <div class="box" id="box2">
+    	<div class="overlay" onclick="loadDetail('detail-tiffany.html');">
+        	<div class="text">
+            	<h3>Reimagining an Icon</h3>
+        		<h5>TIFFANY & CO.</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/ret_tiffany.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_smallblock.jpg" />
+    </div>
+    <div class="box" id="box4">
+    	<div class="overlay" onclick="loadDetail('detail-hyundai-shinchon.html');">
+        	<div class="text">
+            	<h3>Fashion Hub</h3>
+        		<h5>HYUNDAI SHINCHON</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_hyundai_shinchon.jpg" />
+    </div>
+    <div class="box" id="box5">
+    	<div class="overlay" onclick="loadDetail('detail-judith-leiber.html');">
+        	<div class="text">
+            	<h3>A New Generation of Glamour</h3>
+        		<h5>JUDITH LEIBER</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_judith_leiber.jpg" />
+    </div>
+    <div class="box" id="box6">
+    	<div class="overlay" onclick="loadDetail('detail-tiffany.html');">
+        	<div class="text">
+            	<h3>Reimagining an Icon</h3>
+        		<h5>TIFFANY & CO.</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_tiffany_02.jpg" />
+    </div>
+    <div class="box" id="box7">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_wideblock.jpg" />
+    </div>    
+    <div class="box" id="box8">
+    	<div class="overlay" onclick="loadDetail('detail-mary-horton.html');">
+        	<div class="text">
+            	<h3>Building a Unique Luxury Brand</h3>
+        		<h5>MARY HORTON</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_mary_horton.jpg" />
+    </div>
+    <div class="box" id="box9">
+    	<div class="overlay" onclick="loadDetail('detail-liverpool-dutyfree.html');">
+        	<div class="text">
+            	<h3>Great Things Come in Small Packages</h3>
+        		<h5>LIVERPOOL DUTY FREE</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_liverpool_dutyfree.jpg" />
+    </div>
+    <div class="box" id="box10">
+    	<div class="overlay" onclick="loadDetail('detail-liverpool-veracruz.html');">
+        	<div class="text">
+            	<h3>A Lifestyle Destination</h3>
+        		<h5>LIVERPOOL VERACRUZ</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_liverpool_veracruz_02.jpg" />
+    </div>
+    
+</div>
+
+</body>
+</html>

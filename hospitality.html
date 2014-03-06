@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	
+	function setBox() {
+		//widths
+		$('#box1').css('width','33.33%');
+		$('#box2').css('width','66.67%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','33.33%')
+		$('#box5').css('width','66.67%')
+		$('#box6').css('width','33.33%')
+		$('#box7').css('width','66.67%')
+		$('#box8').css('width','100%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b5h = $('#box5').height();
+		var b6h = $('#box6').height();
+		var b8h = $('#box8').height();
+		
+		// pos
+		$('#box2').css('left','33.33%');
+		$('#box3').css('top',b1h+'px');
+		$('#box4').css('top',(b1h+b3h)+'px');
+		$('#box5').css('top',b2h+'px');
+		$('#box6').css('left','66.67%');
+		$('#box6').css('top',b2h+'px');
+		$('#box7').css('top',(b2h+b5h)+'px');
+		$('#box8').css('top',(b2h+b6h)+'px');	
+		
+		contentH = b2h+b6h+b8h
+		$('#frch-footer').css('top', contentH+123)		
+		
+		// init
+		if(isInit){
+			build();			
+		}	
+	}
+	
+	$(window).resize(function() {
+		setBox();
+			
+	});
+
+</script>
+
+
+</head>
+
+<body>
+
+<div id="frch-subnav">
+	<ul id="subnav">
+    	<li><a href="javascript:void();" onclick="loadDetail('detail-hotel-32.html')">HOTEL 32</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-hyatt-denver.html')">HYATT DENVER</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-sway.html')">SWAY</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-whim-borgata.html')">WHIM</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-westin-stmaarten.html')">WESTIN ST. MAARTEN</a></li>
+    </ul>  
+</div>
+<div id="frch-content">
+	<div class="box" id="box1">
+    	<div class="overlay" onclick="loadDetail('detail-hotel-32.html');">
+        	<div class="text">
+            	<h3>The Suite Life</h3>
+        		<h5>HOTEL 32</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_hotel32.jpg" />
+    </div>
+    <div class="box" id="box2">
+    	<div class="overlay" onclick="loadDetail('detail-hyatt-denver.html');" >
+        	<div class="text">
+            	<h3>Atmospheric Landscape</h3>
+        		<h5>HYATT DENVER</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/hosp_hyatt_denver.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_smallblock.jpg" />
+    </div>
+    <div class="box" id="box4">
+    	<div class="overlay" onclick="loadDetail('detail-whim-borgata.html');">
+        	<div class="text">
+            	<h3>Service Made Personal</h3>
+        		<h5>WHIM</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_whim_borgata_02.jpg" />
+    </div>
+    <div class="box" id="box5">
+    	<div class="overlay" onclick="loadDetail('detail-sway.html');" >
+        	<div class="text">
+            	<h3>Southern Urban Charm</h3>
+        		<h5>SWAY</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_sway.jpg" />
+    </div>
+    <div class="box" id="box6">
+    	<div class="overlay" onclick="loadDetail('detail-whim-borgata.html');" >
+        	<div class="text">
+            	<h3>Service Made Personal</h3>
+        		<h5>WHIM</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_whim_borgata.jpg" />
+    </div>
+    <div class="box" id="box7">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_wideblock.jpg" />
+    </div>    
+    <div class="box" id="box8">
+    	<div class="overlay" onclick="loadDetail('detail-westin-stmaarten.html');">
+        	<div class="text">
+            	<h3>Island Retreat and Sweet Escape</h3>
+        		<h5>WESTIN ST. MAARTEN</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/hosp_westin_stmaarten.jpg" />
+    </div>
+    
+</div>
+
+</body>
+</html>

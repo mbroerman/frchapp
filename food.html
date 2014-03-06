@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;
+	
+	function setBox() {
+		//widths
+		$('#box1').css('width','33.33%');
+		$('#box2').css('width','66.67%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','33.33%')
+		$('#box5').css('width','33.33%')
+		$('#box6').css('width','66.67%')
+		$('#box7').css('width','33.33%')
+		$('#box8').css('width','33.33%')
+		$('#box9').css('width','33.33%')
+		$('#box10').css('width','66.67%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b5h = $('#box5').height();
+		var b6h = $('#box6').height();
+		var b8h = $('#box8').height();
+		var b10h = $('#box10').height();
+		
+		// pos
+		$('#box2').css('left','33.33%');
+		$('#box3').css('top',b1h+'px');
+		$('#box4').css('top',b2h+'px');
+		$('#box4').css('left','33.33%');
+		$('#box5').css('left','66.67%');
+		$('#box5').css('top',b2h+'px');	
+		$('#box6').css('top',(b1h+b3h)+'px');	
+		$('#box7').css('left','66.67%');
+		$('#box7').css('top',(b2h+b5h)+'px');	
+		$('#box8').css('top',(b1h+b3h+b6h)+'px');
+		$('#box9').css('top',(b1h+b3h+b6h+b8h)+'px');
+		$('#box10').css('left','33.33%');
+		$('#box10').css('top',(b1h+b3h+b6h)+'px');	
+		
+		contentH = b1h+b3h+b6h+b10h
+		$('#frch-footer').css('top', contentH+123)		
+		
+		// init
+		if(isInit){
+			build();			
+		}	
+	}
+	
+	$(window).resize(function() {
+		setBox();
+			
+	});
+
+</script>
+
+
+</head>
+
+<body>
+
+<div id="frch-subnav">
+	<ul id="subnav">
+    	<li><a href="javascript:void();" onclick="loadDetail('detail-boca.html')">BOCA</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-dolce.html')">DOLCE</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-dubai.html')">BUSCH'S DUBAI</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-palate-cannes.html')">PALATE CANNES</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-palate-monaco.html')">PALATE MONACO</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-westin-stmaarten.html')">WESTIN ST. MAARTEN</a></li>
+        <li><a href="javascript:void();" onclick="loadDetail('detail-yellowtail.html')">YELLOWTAIL</a></li>
+    </ul>  
+</div>
+<div id="frch-content">
+	<div class="box" id="box1" name="test">
+    	<div class="overlay" onclick="loadDetail('detail-yellowtail.html');">
+        	<div class="text">
+            	<h3>Multi-Sensory Feast</h3>
+        		<h5>YELLOWTAIL</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_yellowtail_01.jpg" />
+    </div>
+    <div class="box" id="box2">
+    	<div class="overlay" onclick="loadDetail('detail-palate-monaco.html');">
+        	<div class="text">
+            	<h3>TBD</h3>
+        		<h5>PALATE MONACO</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/food_palate_monoco.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<div class="overlay" onclick="loadDetail('detail-westin-stmaarten.html');">
+        	<div class="text">
+            	<h3>Island Retreat and Sweet Escape</h3>
+        		<h5>WESTIN ST. MAARTEN</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_westin_stmaarten.jpg" />
+    </div>
+    <div class="box" id="box4">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_smallblock.jpg" />
+    </div>
+    <div class="box" id="box5">
+    	<div class="overlay" onclick="loadDetail('detail-boca.html');">
+        	<div class="text">
+            	<h3>Decadent Delight</h3>
+        		<h5>BOCA</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_boca.jpg" />
+    </div>
+    <div class="box" id="box6">
+    	<div class="overlay" onclick="loadDetail('detail-palate-cannes.html');">
+        	<div class="text">
+            	<h3>TBD</h3>
+        		<h5>PALATE CANNES</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_palate_cannes.jpg" />
+    </div>
+    <div class="box" id="box7">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_smallblock.jpg" />
+    </div>
+    <div class="box" id="box8">
+    	<div class="overlay" onclick="loadDetail('detail-dolce.html');">
+        	<div class="text">
+            	<h3>TBD</h3>
+        		<h5>DOLCE</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_dolce.jpg" />
+    </div>
+    <div class="box" id="box9">
+    	<div class="overlay" onclick="loadDetail('detail-yellowtail.html');">
+        	<div class="text">
+            	<h3>Multi-Sensory Feast</h3>
+        		<h5>YELLOWTAIL</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_yellowtail_02.jpg" />
+    </div>
+    <div class="box" id="box10">
+    	<div class="overlay" onclick="loadDetail('detail-dubai.html');">
+        	<div class="text">
+            	<h3>Extraordinary Dining</h3>
+        		<h5>BUSCH'S WORLDS OF DISCOVERY</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_dubai.jpg" />
+    </div>
+    
+</div>
+
+</body>
+</html>

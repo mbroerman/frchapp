@@ -78,12 +78,15 @@
 	var screenH;
 	var screenW;
 	var contentH;
+	var maxH;
+	var scrollPos;
+	var isContact = false;
 
 	//-----------------------
 	// main pages
 	
 	function loadContent(target) {
-			$('#loader').show();
+			//$('#loader').show();
 			$('#frch-holder').hide();
 			$('#frch-footer').hide();
 			$('#frch-detail').hide();
@@ -123,7 +126,7 @@
 	function loadNextImage(source) {	
 		if(imagesLoad >= imagesLoad_arr.length) {			
 			// wait for all images to load then execute
-			$('#loader').hide();
+			//$('#loader').hide();
 			
 			if(source == 'main'){
 				//$(window).resize();	
@@ -145,29 +148,37 @@
 					},		
 				});
 				
+				// scrolls to top
+				$('html, body').animate({ scrollTop: 0 }, 250,'',function(){});
 				
-				$('html, body').animate({ scrollTop: 0 }, 300);
-				$(window).resize();
-					
-				$('#frch-detail').css('opacity', 0);	
+				// sizes popup
+				$(window).resize();		
+				$('#frch-detail').height($(document).height());	
+				$('#frch-detail').css('opacity', 0);
+				
+				// shows popup	
 				$('#frch-detail').show();
 				$('#frch-detail').animate({
 					opacity: 1
-				},250);	
+				},500,function(){
+					$('#frch-detail').height($('.content').height()+60)
+					$('#frch-detail').css('min-height', $(window).height()-106)
+					
+					// freezes bg
+					$('#frch-content').css({
+						'position': 'fixed',
+						'height':	$(window).height(),
+						'width': '100%'
+					});
+					$('#frch-footer').hide();
+
+				});	
+			
+				
 			}
 	
 		} else {
 			// load next image
-			/*
-			$('<img/>').attr('src').load(imagesLoad_arr[imagesLoad], function( response, status, xhr ) {
-				if(status=='success'){
-					imagesLoad++;
-					loadNextImage(source);
-				} else {
-					alert(status)
-				}
-			});
-			*/
 			$('<img/>').attr('src', imagesLoad_arr[imagesLoad]).load(function() {
 					
 				imagesLoad++;
@@ -176,16 +187,6 @@
 			
 		}
 	}
-	/*
-	function boxReset() {
-		$('.box').each(function() {	
-			$(this).width(0);
-			$(this).css('left','0px');
-			$(this).css('top','0px')
-		})	
-		alert(1);
-	}
-	*/
 	
 	function build() {
 		var i = 0;
@@ -265,11 +266,7 @@
 			});
 		}, 500);
 		
-		setTimeout(function(){
-			$('#frch-footer').css('top',$(document).height()-3);
-			$('#frch-footer').show();
-		},0);
-		
+		$('#frch-footer').show();		
 		isInit = false;		
 	}
 	
@@ -278,7 +275,8 @@
 	
 	function loadDetail(target) {
 		
-		$('#loader').show();
+		//$('#loader').show();		
+		
 		$('#frch-detail').hide();
 		$('#frch-detail').load(target, function(data) {			
 			// Loaded
@@ -307,7 +305,16 @@
 	}
 	
 	function closeDetail() {
-		$('#frch-detail').fadeOut();
+		// unfreezes bg
+		$('#frch-content').css({
+			'position': 'relative'
+		});	
+
+		$('#frch-footer').show();
+		
+		// hides popup
+		$(window).resize();
+		$('#frch-detail').fadeOut(500);
 		$('#subnav').find('.subnavselected').removeClass('subnavselected');
 	}
 	
@@ -316,13 +323,6 @@
 
 	$(document).ready(function() {	
 		$(window).resize();
-		/*
-		window.addEventListener("orientationchange", function() {
-			// Announce the new orientation number
-			//alert(window.orientation);
-			$('body').scrollTop(0)
-		}, false);
-		*/
 			
 		$('#mainnav').each(function() {	
 			$(this).find('a').click(function() {
@@ -334,7 +334,7 @@
 		$('#nav-home').click(function(){
 			$('.navselected').removeClass('navselected');
 		});
-		
+		/*
 		$('.contact-name').click(function() {
 			$('.contact-name').fadeOut(500);
 			$('.contact-details').fadeIn(500);
@@ -343,13 +343,52 @@
 			$('.contact-name').fadeIn(500);
 			$('.contact-details').fadeOut(500);
 		});	
+		*/
+		
+		$('.contact-name').click(function() {
+			if(!isContact){
+				$('#frch-contact, #frch-contact-cover').show();
+				$('#frch-contact').stop().animate({
+					top: 37,
+					opacity: 1
+				},500,'easeOutExpo', function(){
+						
+				});
+				isContact=true;
+			} else {
+				$('#frch-contact').stop().animate({
+					top: 20,
+					opacity: 0
+				},500,'easeOutExpo', function(){
+					$(this).hide();	
+				});
+				isContact=false;
+			}
+		})
+		
+		$('#frch-contact-cover').click(function() {
+			$(this).hide();
+			$('#frch-contact').stop().animate({
+				top: 20,
+				opacity: 0
+			},500,'easeOutExpo', function(){
+				$(this).hide();	
+			});
+			isContact=false;
+		})
+		
 	});
 	
 	$(window).resize(function() {
 		screenW = $(document).width();
 		screenH = $(document).height();
-		$('#frch-detail').height(screenH-125);
-		//alert($('#frch-content').height());
+		$('#frch-detail').css('min-height', $(window).height()-106);
+		//$('#frch-holder').height(screenH-76);
+	
+	});
+	
+	$(window).scroll(function () {
+		scrollPos = $(window).scrollTop();
 	});
 
 
@@ -359,10 +398,20 @@
 </head>
 
 <body>
-<div id="loader"></div>
-<div id="frch-detail">
-
+<!--<div id="loader"></div>-->
+<div id="frch-contact">
+	<div class="pointer"></div>
+	<div>
+	<h4>JOHN DOE</h4>
+    (513) 241-3000<br />
+    <a href="#">john.doe@frch.com</a><br /><br />
+    
+    <h4>SALLY JENKINS</h4>
+    (513) 241-3000<br />
+    <a href="#">sally.jenkins@frch.com</a>
+    </div>
 </div>
+<div id="frch-contact-cover"></div>
 
 <div id="frch-header">
 	<div id="frch-logo"><a id="nav-home" href="#"><img src="_img/logo_frch.png" alt="FRCH | Design Worldwide" /></a></div>
@@ -370,7 +419,7 @@
     	<div class="contact-url"><a href="http://www.frch.com" target="_blank">FRCH.COM</a></div>
     	<div class="contact-header">
         	<div class="contact-name">CONTACT</div>
-            <div class="contact-details">JOHN DOE, (513) 241-3000, <a href="#">john.doe@frch.com</a></div>
+            <!--<div class="contact-details">JOHN DOE, (513) 241-3000, <a href="#">john.doe@frch.com</a></div>-->
         </div>
     	<span></span>
         <div class="clear"></div> 
@@ -379,7 +428,7 @@
 </div>
 <div id="frch-mainnav">
 	<ul id="mainnav">
-    	<li><a id="nav-retail" href="#retail">LUXURY RETAIL</a>
+    	<li><a id="nav-retail" href="#retail">RETAIL</a>
         <li><a id="nav-hospitality" href="#hospitality">HOSPITALITY</a>
         <li><a id="nav-architecture" href="#architecture">MASTER PLANNING/ARCHITECTURE</a>
         <li><a id="nav-food" href="#food">FOOD & BEVERAGE</a>
@@ -388,10 +437,10 @@
 <div id="frch-holder">
 	
 </div>
-
 <div id="frch-footer">
-	<div>CONTACT: JOHN DOE, (513) 241-3000, <a href="#">john.doe@frch.com</a></div>
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="#">FRCH.COM</a></div>
 </div>
+
 
 </body>
 </html>

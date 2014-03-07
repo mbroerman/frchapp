@@ -46,6 +46,7 @@ html, body {
     appearance: none; 
 	
 	min-width: 720px;
+	z-index: 200;
 
 }
 
@@ -104,7 +105,7 @@ p {
 
 
 a:link, a:visited, a:active {
-	color: #f6b041;
+	color: #bad001;
 	text-decoration: none;
 }
 
@@ -178,15 +179,15 @@ a[href^=tel]{
 #frch-header {
 	position: fixed;
 	width: 100%;
-	height: 56px;
+	height: 44px;
 	background: #ffffff;
 	z-index: 800;
 }
 
 #frch-logo {
 	position: absolute;
-	top: 16px;
-	left: 29px;	
+	top: 10px;
+	left: 24px;	
 	z-index: 800;
 }
 
@@ -196,8 +197,8 @@ a[href^=tel]{
 	
 #frch-tagline {
 	position: absolute;
-	top: 20px;
-	right: 29px;
+	top: 14px;
+	right: 24px;
 	
 	font-family: 'Gotham SSm A', Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -259,11 +260,79 @@ a[href^=tel]{
 		float: right;	
 	}
 
+
+#frch-contact {
+	display: none;
+	position: fixed;
+	top: 30px;
+	right: 40px;
+	width: 220px;
+	height: auto;
+	
+	background: #e8e8e8;
+	z-index: 950;	
+	
+	font-family: 'Gotham SSm A', Arial, Helvetica, sans-serif;	
+	font-size: 12px;
+	color: #888888;
+	line-height: 16px;
+	margin-bottom: 30px;
+	text-align: left;
+	
+	/*
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	*/
+}
+
+	#frch-contact div {
+		padding: 20px;
+		padding-top: 15px;
+	}
+	
+	#frch-contact .pointer {
+		padding: 0;
+		position: absolute;
+		top: -15px;
+		left: 102px;
+		width: 15px;
+		height: 15px;
+		background: transparent url('../_img/bg_pointer.png') bottom center no-repeat;
+		background-size: 100%;
+	}
+
+	#frch-contact h4 {
+		font-family: 'Gotham SSm A', Arial, Helvetica, sans-serif;	
+		font-size: 11px;
+		font-weight: bold;
+		color: #000000;
+		line-height: 17px;
+		margin-bottom: 0px;
+		letter-spacing: 1px;
+	}
+	
+	#frch-contact a {
+		color: #888888;	
+		text-decoration: none;
+	}
+	
+#frch-contact-cover {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: transparent;
+	
+	z-index: 940;	
+}
+
+
 #frch-mainnav {
 	position: fixed;
-	top: 56px;
+	top: 44px;
 	width: 100%;
-	height: 40px;
+	height: 34px;
 	background: #222222;
 	z-index: 800;
 	overflow: hidden;
@@ -276,7 +345,7 @@ a[href^=tel]{
 	}
 	
 	#mainnav {
-		margin-left: 30px;	
+		margin-left: 25px;	
 	}
 	
 	 #mainnav li {
@@ -289,7 +358,7 @@ a[href^=tel]{
 		font-size: 10px;
 		font-weight: 700;
 		color: #666666;
-		line-height: 40px;
+		line-height: 34px;
 		letter-spacing: 1px; 
 	 }
 	 
@@ -318,7 +387,7 @@ a[href^=tel]{
 	}
 	
 	#subnav {
-		margin-left: 30px;	
+		margin-left: 25px;	
 	}
 	
 	 #subnav li {
@@ -342,12 +411,15 @@ a[href^=tel]{
 	
 #frch-holder {
 	position: relative;
-	padding-top: 96px;	
+	width: 100%;
+	padding-top: 77px;
+	z-index: 600;
 }
 
 #frch-content {
 	position: relative;	
 	margin-top: 29px;
+	z-index: 100;
 }
 
 #loader {
@@ -447,7 +519,7 @@ a[href^=tel]{
 		font-size: 24px;
 		font-weight: normal;
 		font-style: italic;
-		color: #000000;
+		color: #333333;
 		line-height: 26px;
 		margin-bottom: 6px;
 	}
@@ -456,7 +528,7 @@ a[href^=tel]{
 		font-family: 'Gotham SSm A', Arial, Helvetica, sans-serif;	
 		font-size: 12px;
 		font-weight: 400;
-		color: #333333;
+		color: #555555;
 		line-height: 19px;
 		margin-bottom: 8px;
 		letter-spacing: 2px;
@@ -469,7 +541,7 @@ a[href^=tel]{
 		width: 100%;
 		height: 100%;
 		background: #ffffff;
-		opacity: 0.9;
+		opacity: 0.8;
 	}
 	
 	
@@ -491,14 +563,15 @@ a[href^=tel]{
 #frch-detail {
 	display: none;
 	position: absolute;
-	top: 126px;
+	top: 107px;
 	left: 0;
 	
 	width: 100%;
 	height: 100%;
 	background: transparent;
+	min-height: 100%;
 	
-	z-index: 650;	
+	z-index: 700;	
 }
 
 	#frch-detail .bg {
@@ -506,23 +579,21 @@ a[href^=tel]{
 		width: 100%;
 		height: 100%;
 		background: #000000;
-		opacity: 0.92;
-		z-index: 500;	
+		opacity: 0.85;
 	}
 	
 	#frch-detail .content {
 		position: absolute;
 		top: 0;
 		left: 0;
-		padding: 20px;
+		padding: 0;
 		padding-top: 30px;	
-		
-		z-index: 900;
 	}
 	
-	#frch-detail .columnOne {
+	#frch-detail .columnOne {		
 		width: 60%;
-		float: left;	
+		float: left;
+		padding-bottom: 30px;	
 	}
 	
 		#frch-detail .columnOne img {
@@ -531,10 +602,17 @@ a[href^=tel]{
 		}
 	
 	#frch-detail .columnTwo {
-		width: 30%;
+		width: 32%;
 		margin-left: 30px;
-		float: left;	
+		float: left;
+		padding-bottom: 30px;	
+		
 	}
+	
+		#frch-detail .columnTwo .text {
+			height: 295px;
+			overflow-y: scroll;
+		}
 	
 		#frch-detail h2 {
 			position: relative;
@@ -562,7 +640,7 @@ a[href^=tel]{
 	display: none;
 	position: absolute;
 	width: 100%;
-	height: 50px;
+	height: 40px;
 	background: #ffffff;
 	z-index: 600;
 		
@@ -571,8 +649,8 @@ a[href^=tel]{
 	#frch-footer div {
 		display: block;
 		position: absolute;
-		top: 5px;
-		right: 30px;
+		top: 0px;
+		right: 25px;
 		
 		font-family: 'Gotham SSm A', Arial, Helvetica, sans-serif;	
 		font-size: 11px;

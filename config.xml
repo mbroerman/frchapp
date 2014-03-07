@@ -7,6 +7,13 @@
 <name>FRCH</name>
 <description>FRCH | Design Worldwide App</description>
 <author href="http://openfieldcreative.com" email="">Openfield Creative</author>
+
+<!-- select the platforms for conversion -->
+<gap:platform name="ios" />
+<!--
+<gap:platform name="android" />
+<gap:platform name="winphone" />
+-->
 <!--
         If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET

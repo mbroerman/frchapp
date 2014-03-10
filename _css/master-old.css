@@ -427,7 +427,6 @@ a[href^=tel]{
 	width: 100%;
 	padding-top: 77px;
 	z-index: 600;
-
 }
 
 #frch-content {
@@ -490,11 +489,6 @@ a[href^=tel]{
 	box-sizing: border-box; 
 	
 	overflow:hidden;	
-	
-	-webkit-transform: translate3d(0, 0, 0);
-   -moz-transition: opacity .5s ease-in-out;
-   -webkit-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
 }
 
 	.box img {
@@ -507,20 +501,13 @@ a[href^=tel]{
 	}
 	
 	
-	
 .overlay {
-	display: block;
+	display: none;
 	position: absolute;
 	width: 100.5%;
 	height: 100.5%;
 	z-index: 50;
-	text-align: left;
-	opacity: 0;	
-	
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
-    transition: opacity .25s ease-in-out;
+	text-align: left;	
 }
 
 	.overlay:before {
@@ -597,13 +584,7 @@ a[href^=tel]{
 	background: transparent;
 	min-height: 100%;
 	
-	z-index: 700;
-	opacity: 0;
-	
-	-webkit-transform: translate3d(0, 0, 0);
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
-    transition: opacity .25s ease-in-out;
+	z-index: 700;	
 }
 
 	#frch-detail .bg {

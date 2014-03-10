@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="FRCH">
 
 <!--<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6616472/683384/css/fonts.css" />-->
-<link rel="stylesheet" href="_css/master.css" type="text/css" media="screen, print">
+<link rel="stylesheet" href="_css/master-trans.css" type="text/css" media="screen, print">
 <script type="text/javascript" src="_js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="_js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
@@ -65,6 +65,7 @@
 	var maxH;
 	var scrollPos;
 	var isContact = false;
+	var detailOpen;
 
 	//-----------------------
 	// main pages
@@ -73,7 +74,7 @@
 			//$('#loader').show();
 			$('#frch-holder').hide();
 			$('#frch-footer').hide();
-			$('#frch-detail').hide();
+			//$('#frch-detail').hide();
 			$('#frch-holder').load(target, function() {	
 				//if(status=='success'){		
 					// Loaded			
@@ -138,10 +139,11 @@
 				// sizes popup
 				$(window).resize();		
 				$('#frch-detail').height($(document).height());	
-				$('#frch-detail').css('opacity', 0);
 				
 				// shows popup	
 				$('#frch-detail').show();
+				setTimeout(function() {$('#frch-detail').css('opacity', 1)},10);
+				/*
 				$('#frch-detail').animate({
 					opacity: 1
 				},500,function(){
@@ -157,6 +159,20 @@
 					$('#frch-footer').hide();
 
 				});	
+				*/
+				
+				setTimeout(function() {
+					$('#frch-detail').height($('.content').height()+60)
+					$('#frch-detail').css('min-height', $(window).height()-106)
+					
+					// freezes bg
+					$('#frch-content').css({
+						'position': 'fixed',
+						'height':	$(window).height(),
+						'width': '100%'
+					});
+					$('#frch-footer').hide();
+				}, 500)
 			
 				
 			}
@@ -183,18 +199,12 @@
 		setTimeout(function() {
 			$('.box').each(function() {	
 				var overlay = $(this).children('.overlay')
+				
+				// css transition
 				$(this).mouseenter(function() {
-					overlay.css('opacity',0);
-					overlay.show();
-					overlay.stop().animate({
-						opacity: 1	
-					},300);
+					overlay.css('opacity',1);
 				}).mouseleave(function() {
-					overlay.stop().animate({
-						opacity: 0
-					},300,function(){
-						$(this).hide();
-					});
+					overlay.css('opacity',0);
 				});	
 				
 				$(this).css('z-index',i+100);
@@ -203,7 +213,7 @@
 			
 				$(this).delay(i*150).animate({
 					opacity: 1				
-				},700);	
+				},0);	
 				i++;	
 				
 				/* scale */
@@ -299,7 +309,12 @@
 		// hides popup
 		$(window).resize();
 		$('#subnav').find('.subnavselected').removeClass('subnavselected');
-		$('#frch-detail').fadeOut(500);
+		
+		// css transition
+		$('#frch-detail').css('opacity',0);
+		setTimeout(function() {
+			$('#frch-detail').hide()
+		},250)
 		
 	}
 	
@@ -315,9 +330,24 @@
 		// hides popup
 		$(window).resize();
 		$('#subnav').find('.subnavselected').removeClass('subnavselected');
+		
+		detailOpen = $('#frch-detail').css('opacity');
+		
+		// css transition
+		if(detailOpen == 1){
+			$('#frch-detail').css('opacity',0);
+			setTimeout(function() {
+				loadDetail(target);	
+			},250)
+		} else {
+			loadDetail(target);
+		}
+		
+		/*
 		$('#frch-detail').fadeOut(500,function(){
 			loadDetail(target);	
 		});
+		*/
 		
 		
 	}

@@ -509,19 +509,18 @@ a[href^=tel]{
 	
 	
 .overlay {
-	display: block;
+	display: none;
 	position: absolute;
 	width: 100.5%;
 	height: 100.5%;
 	z-index: 50;
 	text-align: left;
 	opacity: 0;	
-	/*
+	
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
     transition: opacity .25s ease-in-out;
-	*/
 }
 
 	.overlay:before {

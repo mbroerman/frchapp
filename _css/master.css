@@ -489,6 +489,7 @@ a[href^=tel]{
 	box-sizing: border-box; 
 	
 	overflow:hidden;	
+
 }
 
 	.box img {
@@ -507,7 +508,7 @@ a[href^=tel]{
 	width: 100.5%;
 	height: 100.5%;
 	z-index: 50;
-	text-align: left;	
+	text-align: left;
 }
 
 	.overlay:before {
@@ -555,7 +556,9 @@ a[href^=tel]{
 		height: 100%;
 		background: #ffffff;
 		opacity: 0.8;
+	
 	}
+	
 	
 	
 /* DETAIL */

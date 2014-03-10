@@ -197,14 +197,28 @@
 		var isSafari = navigator.userAgent.indexOf('Safari') > -1;
 		
 		setTimeout(function() {
-			$('.box').each(function() {	
-				var overlay = $(this).children('.overlay')
-				
+			$('.box').each(function() {					
 				// css transition
+				/*
 				$(this).mouseenter(function() {
 					overlay.css('opacity',1);
 				}).mouseleave(function() {
 					overlay.css('opacity',0);
+				});	
+				*/
+				var overlay = $(this).children('.overlay')
+				$(this).mouseenter(function() {
+					overlay.css('opacity',0);
+					overlay.show();
+					overlay.stop().animate({
+						opacity: 1	
+					},300);
+				}).mouseleave(function() {
+					overlay.stop().animate({
+						opacity: 0
+					},300,function(){
+						$(this).hide();
+					});
 				});	
 				
 				$(this).css('z-index',i+100);

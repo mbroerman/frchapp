@@ -314,8 +314,28 @@
 		
 		// hides popup
 		$(window).resize();
-		$('#frch-detail').fadeOut(500);
 		$('#subnav').find('.subnavselected').removeClass('subnavselected');
+		$('#frch-detail').fadeOut(500);
+		
+	}
+	
+	function subnavDetail(target) {
+		// unfreezes bg
+		/*
+		$('#frch-content').css({
+			'position': 'relative'
+		});	
+
+		$('#frch-footer').show();
+		*/
+		// hides popup
+		$(window).resize();
+		$('#subnav').find('.subnavselected').removeClass('subnavselected');
+		$('#frch-detail').fadeOut(500,function(){
+			loadDetail(target);	
+		});
+		
+		
 	}
 	
 	//----------------------

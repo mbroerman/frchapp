@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="_js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+	function unscroll() {
+		$('#scrollable').css({
+			'overflow':	'hidden'
+		})
+	}
+	
+	function scroll() {
+		$('#scrollable').css({
+			'overflow':	'scroll'
+		})
+	}
+</script>
+<style>
+	#scrollable {
+		width: 200px;
+		height: 100px;
+		overflow: scroll;	
+		overflow-x: hidden;
+		background: #cc0000;
+	}
+</style>
+
+
+</head>
+
+<body>
+<div id="scrollable">
+    <h2>hello</h2>
+    <p>Relocating their five-star restaurant to a landmark building in the heart of a downtown theater and art district, Boca restaurant seized the opportunity to redefine its culinary experience. Once a cozy, new-age neighborhood Italian trattoria, patrons now bask in the twilight sparkle of crystal chandeliers in a two-story dining room designed to make a grand statement at first look. But upon inspection, deep colors, spot lighting and richly textured walls sculpt an intimate persona that perfectly pairs place and cuisine.</p>
+    <p>Relocating their five-star restaurant to a landmark building in the heart of a downtown theater and art district, Boca restaurant seized the opportunity to redefine its culinary experience. Once a cozy, new-age neighborhood Italian trattoria, patrons now bask in the twilight sparkle of crystal chandeliers in a two-story dining room designed to make a grand statement at first look. But upon inspection, deep colors, spot lighting and richly textured walls sculpt an intimate persona that perfectly pairs place and cuisine.</p>
+    <p>Relocating their five-star restaurant to a landmark building in the heart of a downtown theater and art district, Boca restaurant seized the opportunity to redefine its culinary experience. Once a cozy, new-age neighborhood Italian trattoria, patrons now bask in the twilight sparkle of crystal chandeliers in a two-story dining room designed to make a grand statement at first look. But upon inspection, deep colors, spot lighting and richly textured walls sculpt an intimate persona that perfectly pairs place and cuisine.</p>
+</div>
+
+<a onclick="unscroll()">unscroll</a>
+
+<a onclick="scroll()">scroll</a>
+
+</body>
+</html>

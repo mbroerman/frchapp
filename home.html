@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
 	isInit = true;	
+	isHome = true;
 	
 	function setBox() {
 		//widths
@@ -41,7 +42,7 @@
 		$('#box9').css('top',(b1h+b3h+b5h)+'px');
 		
 		contentH = b1h+b3h+b5h+b8h
-		$('#frch-footer').css('top', contentH+76)	
+		$('#frch-footer').css('top', contentH-3)	
 		
 		// init
 		if(isInit){
@@ -49,15 +50,6 @@
 						
 		}	
 	}
-	
-	$(document).ready(function() {	
-		$('#frch-content').css('margin-top',0);
-	});
-	
-	$(window).resize(function() {
-		setBox();
-			
-	});
 
 </script>
 
@@ -161,6 +153,10 @@
     </div>
     
     
+</div>
+
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="#">FRCH.COM</a></div>
 </div>
 
 </body>

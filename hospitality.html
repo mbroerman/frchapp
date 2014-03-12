@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
 	isInit = true;	
+	isHome = false;
 	
 	function setBox() {
 		//widths
@@ -35,18 +36,13 @@
 		$('#box8').css('top',(b2h+b6h)+'px');	
 		
 		contentH = b2h+b6h+b8h
-		$('#frch-footer').css('top', contentH+104)		
+		$('#frch-footer').css('top', contentH-3)
 		
 		// init
 		if(isInit){
 			build();			
 		}	
 	}
-	
-	$(window).resize(function() {
-		setBox();
-			
-	});
 
 </script>
 
@@ -54,22 +50,21 @@
 </head>
 
 <body>
-
+<!--
 <div id="frch-subnav">
 	<ul id="subnav">
-    	<li><a href="javascript:void();" onclick="subnavDetail('detail-hotel-32.html')">HOTEL 32</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-hyatt-denver.html')">HYATT DENVER</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-sway.html')">SWAY</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-whim-borgata.html')">WHIM</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-westin-stmaarten.html')">WESTIN ST. MAARTEN</a></li>
+    	<li><a href="javascript:void();" rel="detail-hotel-32.html">HOTEL 32</a></li>
+        <li><a href="javascript:void();" rel="detail-hyatt-denver.html">HYATT DENVER</a></li>
+        <li><a href="javascript:void();" rel="detail-sway.html">SWAY</a></li>
+        <li><a href="javascript:void();" rel="detail-whim-borgata.html">WHIM</a></li>
+        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html">WESTIN ST. MAARTEN</a></li>
     </ul>  
 </div>
-<div id="frch-detail">
+-->
 
-</div>
 <div id="frch-content">
 	<div class="box" id="box1">
-    	<div class="overlay" onclick="loadDetail('detail-hotel-32.html');">
+    	<div class="overlay" rel="detail-hotel-32.html">
         	<div class="text">
             	<h3>The Suite Life</h3>
         		<h5>HOTEL 32</h5>
@@ -79,7 +74,7 @@
     	<img src="_img/hosp_hotel32.jpg" />
     </div>
     <div class="box" id="box2">
-    	<div class="overlay" onclick="loadDetail('detail-hyatt-denver.html');" >
+    	<div class="overlay" rel="detail-hyatt-denver.html" >
         	<div class="text">
             	<h3>Atmospheric Landscape</h3>
         		<h5>HYATT DENVER</h5>  
@@ -101,7 +96,7 @@
     	<img src="_img/quote_smallblock.jpg" />
     </div>
     <div class="box" id="box4">
-    	<div class="overlay" onclick="loadDetail('detail-whim-borgata.html');">
+    	<div class="overlay" rel="detail-whim-borgata.html">
         	<div class="text">
             	<h3>Service Made Personal</h3>
         		<h5>WHIM</h5>
@@ -111,7 +106,7 @@
     	<img src="_img/hosp_whim_borgata_02.jpg" />
     </div>
     <div class="box" id="box5">
-    	<div class="overlay" onclick="loadDetail('detail-sway.html');" >
+    	<div class="overlay" rel="detail-sway.html" >
         	<div class="text">
             	<h3>Southern Urban Charm</h3>
         		<h5>SWAY</h5> 
@@ -121,7 +116,7 @@
     	<img src="_img/hosp_sway.jpg" />
     </div>
     <div class="box" id="box6">
-    	<div class="overlay" onclick="loadDetail('detail-whim-borgata.html');" >
+    	<div class="overlay" rel="detail-whim-borgata.html" >
         	<div class="text">
             	<h3>Service Made Personal</h3>
         		<h5>WHIM</h5>
@@ -143,7 +138,7 @@
     	<img src="_img/quote_wideblock.jpg" />
     </div>    
     <div class="box" id="box8">
-    	<div class="overlay" onclick="loadDetail('detail-westin-stmaarten.html');">
+    	<div class="overlay" rel="detail-westin-stmaarten.html">
         	<div class="text">
             	<h3>Island Retreat and Sweet Escape</h3>
         		<h5>WESTIN ST. MAARTEN</h5>  
@@ -153,6 +148,10 @@
     	<img src="_img/hosp_westin_stmaarten.jpg" />
     </div>
 
+</div>
+
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="#">FRCH.COM</a></div>
 </div>
 
 </body>

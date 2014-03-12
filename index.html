@@ -15,13 +15,12 @@
 <script type="text/javascript" src="_js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="_js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
-<!--<script type="text/javascript" src="_js/jquery.animate-enhanced.js"></script>-->
-<script type="text/javascript" src="_js/is-mobile.js"></script>
+<script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
+<!--<script type="text/javascript" src="_js/jquery.ui.touch-punch.js"></script>-->
+<script type="text/javascript" src="_js/scrollfix.js"></script>
 
 <link rel="stylesheet" href="_js/flexslider.css" type="text/css" media="screen">
 <script type="text/javascript" src="_js/jquery.flexslider-min.js"></script>
-
-
 <script type="text/javascript" src="_js/swfaddress/swfaddress.js"></script>
 
 <script type="text/javascript">
@@ -29,27 +28,26 @@
 	function handleChange(evt){
 
 		var pathName = evt.pathNames[0]
-		var navName = null;
+		var navName = null;	
 		
-		unNav();
-		
+		unNav();	
+			
 		if (evt.pathNames[0]){
 			//load info page
 			loadContent(pathName+'.html')			
 			$('#nav-'+pathName).addClass('navselected');			
-
 		} else {
 			//load default page			
-			loadContent('home.html')
-		}
+			loadContent('home.html')			
+		}	
 		
-		
+		showSub(pathName);	
 	}
 	
 	function unNav() {
 		$('#mainnav').find('.navselected').removeClass('navselected');
 	}
-	
+		
 	SWFAddress.addEventListener(SWFAddressEvent.CHANGE, handleChange);
 	
 </script>
@@ -59,10 +57,10 @@
 	var imagesLoad = 0;
 	var imagesLoad_arr = new Array ()
 	var isInit = true;
+	var isHome = true;
 	var screenH;
 	var screenW;
 	var contentH;
-	var maxH;
 	var scrollPos;
 	var isContact = false;
 	var detailOpen;
@@ -70,30 +68,31 @@
 	//-----------------------
 	// main pages
 	
+	function showSub(target) {	
+		if(target) {
+			$('#frch-subnav').removeClass('subopen');
+			$('#frch-subnav').height(0);
+			$('.subnav').each(function() {	
+				$(this).hide();
+			});	
+			$('#frch-subnav').addClass('subopen').on('transitionend', function(e) {
+				$(this).off('transitionend');
+			})
+			$('#sub-'+target).show();
+		} else {
+			$('#frch-subnav').removeClass('subopen');
+			$('#frch-subnav').height(0);
+		}
+	}
+	
 	function loadContent(target) {
-			//$('#loader').show();
+			//$('#loader').show();	
 			$('#frch-holder').hide();
-			$('#frch-footer').hide();
-			//$('#frch-detail').hide();
-			$('#frch-holder').load(target, function() {	
-				//if(status=='success'){		
-					// Loaded			
-					$(this).show();
-					$('#frch-subnav').hide();	
-					$('#frch-subnav').slideDown(1000,'easeOutExpo');	
-					
-					// set subnav
-					$('#subnav').each(function() {	
-						$(this).find('a').click(function() {
-							$('.subnavselected').removeClass('subnavselected');
-							$(this).addClass('subnavselected');
-						})
-					});
-						
-					findImages();	
-				//} else {
-					//alert(status);	
-				//}
+			$('#frch-holder').load(target, function() {		
+				// Loaded	
+				$('#frch-holder').show();
+				//$(window).resize();	
+				findImages();	
 			});
 	}
 	
@@ -112,15 +111,12 @@
 		if(imagesLoad >= imagesLoad_arr.length) {			
 			// wait for all images to load then execute
 			//$('#loader').hide();
-			
-			if(source == 'main'){
-				//$(window).resize();	
-				setBox();	
+			if(source == 'main'){										
+				$(window).resize();									
+							
 			} else if (source == "detail") {
-				//$(window).resize();	
-				//setBox();
-	
-				// set gallery			
+				
+				// set gallery		
 				$('.flexslider').flexslider({
 					animation: "slide",
 					slideshow: false, 
@@ -130,57 +126,40 @@
 					touch: true,
 					start: function() {
 					
-					},		
+					}	
 				});
-				
-				// scrolls to top
-				$('html, body').animate({ scrollTop: 0 }, 250,'',function(){});
 				
 				// sizes popup
 				$(window).resize();		
-				$('#frch-detail').height($(document).height());	
 				
 				// shows popup	
 				$('#frch-detail').show();
-				setTimeout(function() {$('#frch-detail').css('opacity', 1)},50);
-				/*
-				$('#frch-detail').animate({
-					opacity: 1
-				},500,function(){
-					$('#frch-detail').height($('.content').height()+60)
-					$('#frch-detail').css('min-height', $(window).height()-106)
-					
-					// freezes bg
-					$('#frch-content').css({
-						'position': 'fixed',
-						'height':	$(window).height(),
-						'width': '100%'
-					});
-					$('#frch-footer').hide();
-
-				});	
-				*/
+				$('#frch-detail-bg').show();
+				$('#frch-detail-bg').css({'opacity':0.8});
 				
 				setTimeout(function() {
-					$('#frch-detail').height($('.content').height()+60)
-					$('#frch-detail').css('min-height', $(window).height()-106)
-					
-					// freezes bg
-					$('#frch-content').css({
-						'position': 'fixed',
-						'height':	$(window).height(),
+					$('#frch-detail').css({'opacity':1}).on('transitionend', function(e) {
+						if($(this).css('opacity') == 1){
+							$(this).off('transitionend');
+						}
+					})					
+				},1);
+				
+				setTimeout(function() {					
+					// freezes bg					
+					$('#frch-holder').css({
+						'overflow-y': 'hidden',
+						//'height':	$(window).height(),
 						'width': '100%'
-					});
-					$('#frch-footer').hide();
-				}, 500)
+					});								
+				}, 1)
 			
 				
 			}
 	
 		} else {
 			// load next image
-			$('<img/>').attr('src', imagesLoad_arr[imagesLoad]).load(function() {
-					
+			$('<img/>').attr('src', imagesLoad_arr[imagesLoad]).load(function() {					
 				imagesLoad++;
 				loadNextImage(source);
 			});
@@ -194,92 +173,58 @@
 		var isChrome = navigator.userAgent.indexOf('Chrome') > -1;
 		var isExplorer = navigator.userAgent.indexOf('MSIE') > -1;
 		var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
-		var isSafari = navigator.userAgent.indexOf('Safari') > -1;
+		var isSafari = navigator.userAgent.indexOf('Safari') > -1;	
 		
-		setTimeout(function() {
-			$('.box').each(function() {		
+		setTimeout(function() {			
+			$('.box').each(function() {	
+				$(this).show();	
 				var overlay = $(this).children('.overlay')	
+				overlay.bind('click', function(){
+					loadDetail($(this).attr('rel'));
+				});	
 						
-				// css transition				
-				$(this).mouseenter(function() {
+				// css transition		
+				$(this).mouseover(function() {
 					overlay.show();
-					setTimeout(function() {overlay.css('opacity',1)},2);
-				}).mouseleave(function() {
-					
-					overlay.css('opacity',0);
-					setTimeout(function() {overlay.hide();},250)
-				});	
-				/*
-				
-				$(this).mouseenter(function() {
-					overlay.css('opacity',0);
-					overlay.show();
-					overlay.stop().animate({
-						opacity: 1	
-					},300);
-				}).mouseleave(function() {
-					overlay.stop().animate({
-						opacity: 0
-					},300,function(){
-						$(this).hide();
+					setTimeout(function() {
+						overlay.css({'opacity':1}).on('transitionend', function(e) {
+							if($(this).css('opacity') == 1){
+								console.trace(1);
+								$(this).off('transitionend');
+							}
+						})
+					},1);
+					//setTimeout(function() {overlay.css('opacity',1)},2);
+				}).mouseleave(function() {					
+					//overlay.css('opacity',0);
+					overlay.css({'opacity':0}).on('transitionend', function(e) {
+						if($(this).css('opacity') == 0){
+							console.trace(0);
+							$(this).off('transitionend');
+							overlay.hide();
+						}
+												
 					});
+					//setTimeout(function() {overlay.hide();},250)
 				});	
-				*/
 				
 				$(this).css('z-index',i+100);
 				
-				/* fade */
-			
+				/* fade */			
 				$(this).delay(i*150).animate({
 					opacity: 1				
-				},0);	
-				i++;	
-				
-				/* scale */
-				/*
-				var thisW = $(this).width();
-				var thisH = $(this).height();
-				var thisT = parseFloat($(this).css('top').slice(0, -2));
-				var thisL;	
-				
-				// safari and iPad use percentages, not pixels
-				if(isMobile){
-					thisL = (parseFloat($(this).css('left').slice(0, -1))/100)*screenW;
-				} else {
-					if (isSafari && !isChrome){
-						thisL = (parseFloat($(this).css('left').slice(0, -1))/100)*screenW;
-					} else {					
-						thisL = parseFloat($(this).css('left').slice(0, -2));
-					}
-				}
-				
-	
-				$(this).width(0);
-				$(this).height(0);
-				$(this).css('top',(thisT+(thisH/2))+'px');
-				$(this).css('left',(thisL+(thisW/2))+'px');
-				
-				$(this).show();
-				$(this).css('opacity',1);
-				$(this).delay(i*100).animate({
-					width: thisW,
-					height: thisH,
-					top: thisT+'px',
-					left: thisL+'px',
-				},1000,'easeOutExpo',function(){
-					$(this).each(function() {
-						$(this).height('auto');	
-					});
-				})
-				//alert(thisT);			
-				i++;
-				*/
-				
-				
-			});
+				},0,function(){	
+				});	
+				i++;					
+			});			
+			
 		}, 500);
 		
-		$('#frch-footer').show();		
+		
+		setTimeout(function(){
+			$('#frch-footer').show();
+		}, 2000);
+				
 		isInit = false;		
 	}
 	
@@ -294,14 +239,9 @@
 		$('#frch-detail').load(target, function(data) {			
 			// Loaded
 			findDetailImages();
-			/*
-			$('#loader').hide();			
-			$(this).css('opacity', 0);	
-			$(this).show();
-			$(this).animate({
-				opacity: 1
-			},250);
-			*/
+		
+			//$('#loader').hide();			
+
 						
 		});
 	}
@@ -319,85 +259,81 @@
 	
 	function closeDetail() {
 		// unfreezes bg
-		$('#frch-content').css({
-			'position': 'relative'
+		$('#frch-holder').css({
+			'overflow-y': 'scroll'
 		});	
-
-		$('#frch-footer').show();
 		
 		// hides popup
 		$(window).resize();
-		$('#subnav').find('.subnavselected').removeClass('subnavselected');
+		$('.subnav').find('.subnavselected').removeClass('subnavselected');
 		
 		// css transition
-		$('#frch-detail').css('opacity',0);
-		setTimeout(function() {
-			$('#frch-detail').hide()
-		},250)
+		$('#frch-detail').css({'opacity':0}).on('transitionend', function(e) {
+			if($(this).css('opacity') == 0){
+				$(this).off('transitionend');
+				$(this).hide();
+			}
+		});
+	
+		$('#frch-detail-bg').css({'opacity':0}).on('transitionend', function(e) {
+			if($(this).css('opacity') == 0){
+				$(this).off('transitionend');
+				$(this).hide();
+			}
+		});
+
 		
 	}
 	
 	function subnavDetail(target) {
-		// unfreezes bg
-		/*
-		$('#frch-content').css({
-			'position': 'relative'
-		});	
-
-		$('#frch-footer').show();
-		*/
+		
 		// hides popup
 		$(window).resize();
-		$('#subnav').find('.subnavselected').removeClass('subnavselected');
 		
-		detailOpen = $('#frch-detail').css('opacity');
-		
+		detailOpen = $('#frch-detail').css('opacity');		
 		// css transition
 		if(detailOpen == 1){
-			$('#frch-detail').css('opacity',0);
-			setTimeout(function() {
+			
+			$('#frch-detail').css({'opacity':0}).on('transitionend', function(e) {
+				$(this).off('transitionend');
 				loadDetail(target);	
-			},250)
+			});
 		} else {
 			loadDetail(target);
 		}
-		
-		/*
-		$('#frch-detail').fadeOut(500,function(){
-			loadDetail(target);	
-		});
-		*/
-		
 		
 	}
 	
 	//----------------------
 	// init
 
-	$(document).ready(function() {	
-		$(window).resize();
-			
+	$(document).ready(function() {		
+		//$(window).resize();
+		
+		// nav
 		$('#mainnav').each(function() {	
-			$(this).find('a').click(function() {
+			$(this).find('a').bind('click', function() {
 				$('.navselected').removeClass('navselected');
 				$(this).addClass('navselected');
+				closeDetail();
 			})
 		});
 		
 		$('#nav-home').click(function(){
 			$('.navselected').removeClass('navselected');
+			closeDetail();
 		});
-		/*
-		$('.contact-name').click(function() {
-			$('.contact-name').fadeOut(500);
-			$('.contact-details').fadeIn(500);
-		})
-		$('.contact-details').click(function() {
-			$('.contact-name').fadeIn(500);
-			$('.contact-details').fadeOut(500);
-		});	
-		*/
-		
+	
+		// subnav
+		$('.subnav li').each(function() {	
+			$(this).find('a').bind('click', function() {
+				$('.subnavselected').removeClass('subnavselected');
+				$(this).addClass('subnavselected');
+				subnavDetail($(this).attr('rel'));				
+			})
+		});				
+	
+		// contact popup
 		$('.contact-name').click(function() {
 			if(!isContact){
 				$('#frch-contact, #frch-contact-cover').show();
@@ -430,14 +366,30 @@
 			isContact=false;
 		})
 		
+		// ScrollFix
+		var scrollingContent = document.getElementById("frch-holder");
+		new ScrollFix(scrollingContent);
+
+		var scrollingSidebar = document.getElementById("frch-detail");
+		new ScrollFix(scrollingSidebar);
+		
 	});
 	
 	$(window).resize(function() {
 		screenW = $(document).width();
 		screenH = $(document).height();
-		$('#frch-detail').css('min-height', $(window).height()-106);
-		//$('#frch-holder').height(screenH-76);
-	
+		$('#frch-detail').css('height', screenH-106);		
+		$('#frch-detail-bg').css('height', screenH-106);
+		if(isHome){
+			$('#frch-holder').css('height', screenH-76);
+			$('#frch-holder').css('top', 76);
+		} else {
+			$('#frch-holder').css('height', screenH-106);
+			$('#frch-holder').css('top', 106);
+		}
+		
+		// for loaded content
+		setBox();
 	});
 	
 	$(window).scroll(function () {
@@ -452,6 +404,7 @@
 
 <body>
 <!--<div id="loader"></div>-->
+<!-- contact popup -->
 <div id="frch-contact">
 	<div class="pointer"></div>
 	<div>
@@ -466,6 +419,7 @@
 </div>
 <div id="frch-contact-cover"></div>
 
+<!-- header -->
 <div id="frch-header">
 	<div id="frch-logo"><a id="nav-home" href="#"><img src="_img/logo_frch.png" alt="FRCH | Design Worldwide" /></a></div>
     <div id="frch-tagline">
@@ -487,13 +441,51 @@
         <li><a id="nav-food" href="#food">FOOD & BEVERAGE</a>
     </ul>    
 </div>
-<div id="frch-holder">
-	
-</div>
-<div id="frch-footer">
-	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="#">FRCH.COM</a></div>
+<div id="frch-subnav">
+	<ul id="sub-retail" class="subnav">
+    	<li><a href="javascript:void();" rel="detail-liverpool-veracruz.html">LIVERPOOL VERACRUZ</a></li>
+        <li><a href="javascript:void();" rel="detail-tiffany.html">TIFFANY & CO.</a></li>
+        <li><a href="javascript:void();" rel="detail-hyundai-shinchon.html">HYUNDAI</a></li>
+        <li><a href="javascript:void();" rel="detail-judith-leiber.html">JUDITH LEIBER</a></li>
+        <li><a href="javascript:void();" rel="detail-mary-norton.html">MARY NORTON</a></li>
+        <li><a href="javascript:void();" rel="detail-liverpool-dutyfree.html">LIVERPOOL DUTY FREE</a></li>
+    </ul>  
+    
+	<ul id="sub-architecture" class="subnav">
+    	<li><a href="javascript:void();" rel="detail-seaworld.html">DUBAI SEAWORLD</a></li>
+        <li><a href="javascript:void();" rel="detail-foxwoods.html">FOXWOODS</a></li>
+        <li><a href="javascript:void();" rel="detail-lgcenter.html">LG CENTER</a></li>
+        <li><a href="javascript:void();" rel="detail-ovation.html">OVATION</a></li>
+        <li><a href="javascript:void();" rel="detail-sirens.html">MGM/T.I.</a></li>
+        <li><a href="javascript:void();" rel="detail-trincity.html">TRINCITY MALL</a></li>
+        <li><a href="javascript:void();" rel="detail-tropicana.html">TROPICANA</a></li>
+    </ul>  
+    
+    <ul id="sub-hospitality" class="subnav">
+    	<li><a href="javascript:void();" rel="detail-hotel-32.html">HOTEL 32</a></li>
+        <li><a href="javascript:void();" rel="detail-hyatt-denver.html">HYATT DENVER</a></li>
+        <li><a href="javascript:void();" rel="detail-sway.html">SWAY</a></li>
+        <li><a href="javascript:void();" rel="detail-whim-borgata.html">WHIM</a></li>
+        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html">WESTIN ST. MAARTEN</a></li>
+    </ul>
+    
+    <ul id="sub-food" class="subnav">
+    	<li><a href="javascript:void();" rel="detail-boca.html">BOCA</a></li>
+        <li><a href="javascript:void();" rel="detail-dolce.html">DOLCE</a></li>
+        <li><a href="javascript:void();" rel="detail-dubai.html">BUSCH'S DUBAI</a></li>
+        <li><a href="javascript:void();" rel="detail-palate-cannes.html">PALATE CANNES</a></li>
+        <li><a href="javascript:void();" rel="detail-palate-monaco.html">PALATE MONACO</a></li>
+        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html">WESTIN ST. MAARTEN</a></li>
+        <li><a href="javascript:void();" rel="detail-yellowtail.html">YELLOWTAIL</a></li>
+    </ul> 
 </div>
 
+<!-- detail popup -->
+<div id="frch-detail"></div>
+<div id="frch-detail-bg"></div>
+
+<!-- box holder -->
+<div id="frch-holder"></div>
 
 </body>
 </html>

@@ -4,8 +4,9 @@
 
 <script type="text/javascript">
 	isInit = true;	
+	isHome = false;
 	
-	function setBox() {
+	function setBox() {		
 		//widths
 		$('#box1').css('width','66.67%');
 		$('#box2').css('width','33.33%')
@@ -45,41 +46,22 @@
 		$('#box10').css('top',(b1h+b3h+b6h+b9h)+'px');
 		
 		contentH = b1h+b3h+b6h+b8h
-		$('#frch-footer').css('top', contentH+104)	
+		$('#frch-footer').css('top', contentH-3)	
 		
 		// init
 		if(isInit){
 			build();			
 		}
 	}
-	
-	$(window).resize(function() {
-		setBox();		
-	});
 
 </script>
-
 
 </head>
 
 <body>
-<div id="frch-subnav">
-	<ul id="subnav">
-    	<li><a href="javascript:void();" onclick="subnavDetail('detail-seaworld.html')">DUBAI SEAWORLD</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-foxwoods.html')">FOXWOODS</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-lgcenter.html')">LG CENTER</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-ovation.html')">OVATION</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-sirens.html')">MGM/T.I.</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-trincity.html')">TRINCITY MALL</a></li>
-        <li><a href="javascript:void();" onclick="subnavDetail('detail-tropicana.html')">TROPICANA</a></li>
-    </ul>  
-</div>
-<div id="frch-detail">
-
-</div>
 <div id="frch-content">
 	<div class="box" id="box1">
-    	<div class="overlay" onclick="loadDetail('detail-ovation.html');">
+    	<div class="overlay" rel="detail-ovation.html">
         	<div class="text">
            		<h3>Riverfront Vision</h3>
                 <h5>OVATION</h5>  
@@ -89,7 +71,7 @@
     	<img src="_img/arch_ovation.jpg" />
     </div>
     <div class="box" id="box2">
-    	<div class="overlay" onclick="loadDetail('detail-tropicana.html');">
+    	<div class="overlay" rel="detail-tropicana.html">
         	<div class="text">
             	<h3>Tip Top Trop</h3>
         		<h5>TROPICANA</h5>            
@@ -111,7 +93,7 @@
     	<img src="_img/quote_tallblock.jpg" />
     </div>
     <div class="box" id="box4">
-    	<div class="overlay" onclick="loadDetail('detail-foxwoods.html');">
+    	<div class="overlay" rel="detail-foxwoods.html">
         	<div class="text">
             	<h3>Enlivening a Resort</h3>
         		<h5>FOXWOODS</h5>
@@ -121,7 +103,7 @@
     	<img src="_img/arch_foxwoods.jpg" />
     </div>
     <div class="box" id="box5">
-    	<div class="overlay" onclick="loadDetail('detail-trincity.html');">
+    	<div class="overlay" rel="detail-trincity.html">
         	<div class="text">
             	<h3>A Grand Plan</h3>
         		<h5>TRINCITY MALL</h5>            	
@@ -131,7 +113,7 @@
     	<img src="_img/arch_trincity_mall.jpg" />
     </div>
     <div class="box" id="box6">
-    	<div class="overlay" onclick="loadDetail('detail-lotte.html');">
+    	<div class="overlay" rel="detail-lotte.html">
         	<div class="text">
             	<h3>Redefining the Lap of Luxury</h3>
         		<h5>LOTTE</h5> 
@@ -141,7 +123,7 @@
     	<img src="_img/arch_lotte.jpg" />
     </div>
     <div class="box" id="box7">
-    	<div class="overlay" onclick="loadDetail('detail-seaworld.html');">
+    	<div class="overlay" rel="detail-seaworld.html">
         	<div class="text">
             	<h3>Pure Delight in Dubai</h3>
         		<h5>DUBAI SEAWORLD</h5> 
@@ -151,7 +133,7 @@
     	<img src="_img/arch_seaworld.jpg" />
     </div>    
     <div class="box" id="box8">
-    	<div class="overlay" onclick="loadDetail('detail-lgcenter.html');">
+    	<div class="overlay" rel="detail-lgcenter.html">
         	<div class="text">
             	<h3> Entertainment Beacon</h3>
         		<h5>LG CENTER SEOUL</h5>
@@ -161,7 +143,7 @@
     	<img src="_img/arch_lg_center.jpg" />
     </div>
     <div class="box" id="box9">
-    	<div class="overlay" onclick="loadDetail('detail-sirens.html');">
+    	<div class="overlay" rel="detail-sirens.html">
         	<div class="text">
             	<h3>The Siren’s Call</h3>
         		<h5>MGM/MIRAGE T.I. HOTEL & CASINO</h5> 
@@ -175,7 +157,7 @@
     	<div class="overlay">
         	<div class="text">
         		<h3>LIVERPOOL VERACRUZ</h3>
-            	<a onclick="loadDetail('detail-temp.html');" href="javascript:void();" class="button">VIEW</a>   
+            	<a rel="detail-temp.html');" href="javascript:void();" class="button">VIEW</a>   
             </div> 
             <div class="bg"></div>   
         </div>
@@ -183,6 +165,10 @@
     	<img src="_img/quote_smallblock.jpg" />
     </div>
 
+</div>
+
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="#">FRCH.COM</a></div>
 </div>
 
 </body>

@@ -18,7 +18,7 @@
     src: url('../_fonts/Gotham-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+}		
 
 * {
 	margin:0;
@@ -32,8 +32,7 @@
 
 html {
 	/* always show scrollbars */
-	overflow: -moz-scrollbars-vertical;
-    overflow-y: scroll;
+	
 }
 
 html, body {
@@ -48,13 +47,16 @@ html, body {
 	border: none;
 	
 	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-text-size-adjust: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
     appearance: none; 
 	
-	min-width: 720px;
+	/*min-width: 720px;*/
 	z-index: 200;
+	
+	overflow: hidden;
 
 }
 
@@ -277,7 +279,7 @@ a[href^=tel]{
 #frch-contact {
 	display: none;
 	position: fixed;
-	top: 30px;
+	top: 20px;
 	right: 43px;
 	width: 220px;
 	height: auto;
@@ -375,7 +377,7 @@ a[href^=tel]{
 		letter-spacing: 1px; 
 	 }
 	 
-	 	#mainnav li a:hover {
+	 	#mainnav li a:hover, #mainnav li a:active {
 			text-decoration: none;
 			color: #ffffff;	
 		}
@@ -386,29 +388,41 @@ a[href^=tel]{
 		
 #frch-subnav {
 	position: fixed;
+	top: 76px;
 	width: 100%;
-	height: 30px;
+	height: 0px;
 	background: #444444;
 	z-index: 800;
 	overflow: hidden;
+	
 }
 
-	#subnav, #subnav li {
+	.subopen {
+		height: 30px !important;
+		
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transition: height .5s cubic-bezier(0,.6,.4,1);
+		-webkit-transition: height .5s cubic-bezier(0,.6,.4,1);
+		transition: height .5s cubic-bezier(0,.6,.4,1);
+	}
+
+	.subnav, .subnav li {
 		margin: 0;
 		padding: 0;
 		list-style: none;	
 	}
 	
-	#subnav {
+	.subnav {
+		display: none;
 		margin-left: 25px;	
 	}
 	
-	 #subnav li {
+	 .subnav li {
 		float: left;
 		margin-right: 25px;	 
 	 }
 	 
-	 #subnav li a {
+	 .subnav li a {
 		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
 		font-size: 9px;
 		/*font-weight: 700;*/
@@ -417,23 +431,28 @@ a[href^=tel]{
 		letter-spacing: 1px; 
 	 }
 	 
-	 	#subnav li a:hover {
+	 	.subnav li a:hover, .subnav li a:active {
 			text-decoration: none;
 			color: #ffffff;	
 		}
 	
 #frch-holder {
-	position: relative;
+	display: none;
+	position: absolute;
 	width: 100%;
-	padding-top: 77px;
+	height: 100%;
+	top: 106px;	
 	z-index: 600;
+	-webkit-overflow-scrolling:touch;
+	overflow-y: scroll;
+	overflow-x: hidden;
 
 }
 
 #frch-content {
 	position: relative;	
-	margin-top: 29px;
 	z-index: 100;
+	
 }
 
 #loader {
@@ -474,6 +493,7 @@ a[href^=tel]{
 
 
 .box {
+	display: none;
 	padding: 0;
 	margin: 0;
 	opacity: 0;
@@ -492,9 +512,9 @@ a[href^=tel]{
 	overflow:hidden;	
 	
 	-webkit-transform: translate3d(0, 0, 0);
-   -moz-transition: opacity .5s ease-in-out;
-   -webkit-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
+   -moz-transition: opacity .5s linear;
+   -webkit-transition: opacity .5s linear;
+    transition: opacity .5s linear;
 }
 
 	.box img {
@@ -518,9 +538,9 @@ a[href^=tel]{
 	opacity: 0;	
 	
 	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
-    transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .2s linear;
+   -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
 }
 
 	.overlay:before {
@@ -555,7 +575,7 @@ a[href^=tel]{
 		font-size: 12px;
 		/*font-weight: 400;*/
 		color: #555555;
-		line-height: 19px;
+		line-height: 16px;
 		margin-bottom: 8px;
 		letter-spacing: 2px;
 	}
@@ -578,34 +598,88 @@ a[href^=tel]{
 	top: 15px;
 	right: 15px;
 	display: block;
-	width: 12px;
-	height: 12px;	
+	width: 14px;
+	height: 14px;
+	z-index: 999;
 }
+
+	.icon-close:hover {
+		opacity: 0.7;
+	}
 
 	.icon-close img {
 		width: 100%;	
 	}
+	
+#frch-detail-bg {
+	position: fixed;
+	display: none;
+	top: 106px;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0;
+	z-index: 650;
+	
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transition: opacity .2s linear;
+   -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;	
+
+}
 
 #frch-detail {
 	display: none;
-	position: absolute;
-	top: 107px;
+	position: fixed;
+	/*margin-top: 30px;*/
+	top: 106px;
 	left: 0;
 	
 	width: 100%;
 	height: 100%;
-	background: transparent;
-	min-height: 100%;
+	/*min-height: 100%;*/
 	
 	z-index: 700;
 	opacity: 0;
 	
+	overflow: hidden;
+	/*overflow-x: hidden;*/
+
 	-webkit-transform: translate3d(0, 0, 0);
    -moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
     transition: opacity .25s ease-in-out;
+
 }
 
+	/*scrollbars */
+	#frch-detail ::-webkit-scrollbar {
+		height: 10px;
+		width: 10px;
+		background: transparent;
+		margin: 10px;
+		}
+	
+	#frch-detail ::-webkit-scrollbar-track {
+		/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+		border-radius: 10px;
+	}
+		
+	#frch-detail ::-webkit-scrollbar-thumb {
+		/*
+		background: -webkit-linear-gradient(right , #666666 0%, #444444 100%); 
+		-webkit-border-radius: 5px;
+		*/
+		background: #222222; 
+		-webkit-border-radius: 5px;
+		border: 1px solid #555555;
+	}
+	#frch-detail ::-webkit-scrollbar-corner {
+		background: transparent;
+	}
+	
+	
+	/*
 	#frch-detail .bg {
 		position: absolute;
 		width: 100%;
@@ -613,9 +687,10 @@ a[href^=tel]{
 		background: #000000;
 		opacity: 0.85;
 	}
+	*/
 	
 	#frch-detail .content {
-		position: absolute;
+		position: relative;
 		top: 0;
 		left: 0;
 		padding: 0;
@@ -642,9 +717,15 @@ a[href^=tel]{
 	}
 	
 		#frch-detail .columnTwo .text {
-			height: 295px;
+			height: 0px;
+			padding-bottom: 110%;
 			overflow-y: scroll;
+			padding-right: 10px;
 		}
+		
+			#frch-detail .columnTwo .text .inner {
+				margin-bottom: -110%;	
+			}
 	
 		#frch-detail h2 {
 			position: relative;
@@ -663,6 +744,12 @@ a[href^=tel]{
 			background: #999999;	
 		}
 		
+	.flexslider .slides {		
+		width: 100%;
+		height: auto;
+	
+	}
+		
 		
 #frch-footer {
 	/*
@@ -674,7 +761,8 @@ a[href^=tel]{
 	width: 100%;
 	height: 40px;
 	background: #ffffff;
-	z-index: 600;
+	z-index: 990;
+	overflow: hidden;
 		
 }
 
@@ -703,6 +791,7 @@ a[href^=tel]{
 	}
 	
 	#frch-footer a {
+		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
 		color: #000000;
 		text-decoration: none;
 		font-weight: 700;	

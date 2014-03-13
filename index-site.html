@@ -85,7 +85,7 @@
 	}
 	
 	function loadContent(target) {
-			//$('#loader').show();	
+			$('#loader').show();	
 			$('#frch-holder').hide();
 			$('#frch-holder').load(target, function() {		
 				// Loaded	
@@ -107,25 +107,27 @@
 	}
 	
 	function loadNextImage(source) {	
-		if(imagesLoad >= imagesLoad_arr.length) {		
+		if(imagesLoad >= imagesLoad_arr.length) {			
 			// wait for all images to load then execute
-			//$('#loader').hide();
+			$('#loader').hide();
+			
 			if(source == 'main'){										
 				$(window).resize();	
 				
 				setTimeout(function(){
 					$('#frch-footer').show();
-				}, 10);						
+				}, 10);								
 							
 			} else if (source == "detail") {
+				
 				// set gallery		
 				$('.flexslider').flexslider({
 					animation: "slide",
 					slideshow: true, 
-					slideshowSpeed: 5000, 
+					slideshowSpeed: 5000,
 					animationLoop: false,
 					keyboardNav: true,
-					directionNav: false,
+					directionNav: true,
 					touch: true,
 					start: function() {
 						
@@ -164,7 +166,7 @@
 						}
 					})				
 				},100);
-	
+				
 			}
 	
 		} else {
@@ -244,15 +246,12 @@
 	
 	function loadDetail(target) {
 		
-		//$('#loader').show();		
+		$('#loader').show();		
 		
 		$('#frch-detail').hide();
 		$('#frch-detail').load(target, function(data) {			
 			// Loaded
 			findDetailImages();
-		
-			//$('#loader').hide();			
-
 						
 		});
 	}
@@ -293,7 +292,6 @@
 			}
 		});
 
-		
 	}
 	
 	function subnavDetail(target) {
@@ -318,7 +316,7 @@
 	//----------------------
 	// init
 
-	$(document).ready(function() {		
+	$(document).ready(function() {	
 		// nav
 		$('#mainnav').each(function() {	
 			$(this).find('a').bind('click', function() {
@@ -415,7 +413,7 @@
 </head>
 
 <body>
-<!--<div id="loader"></div>-->
+<div id="loader"></div>
 <!-- contact popup -->
 <div id="frch-contact">
 	<div class="pointer"></div>

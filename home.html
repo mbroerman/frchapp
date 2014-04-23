@@ -11,12 +11,17 @@
 		$('#box1').css('width','33.33%');
 		$('#box2').css('width','66.67%')
 		$('#box3').css('width','33.33%')
-		$('#box4').css('width','66.67%')
-		$('#box5').css('width','66.67%')
+		$('#box4').css('width','33.33%')
+		$('#box5').css('width','33.33%')
 		$('#box6').css('width','33.33%')
-		$('#box7').css('width','33.33%')
-		$('#box8').css('width','66.67%')
-		$('#box9').css('width','33.33%')
+		$('#box7').css('width','66.67%')
+		$('#box8').css('width','33.33%')
+		$('#box9').css('width','66.67%')
+		$('#box10').css('width','33.33%')
+		$('#box11').css('width','33.33%')
+		$('#box12').css('width','33.33%')
+		$('#box13').css('width','33.33%')
+		$('#box14').css('width','66.67%')
 		
 		//heights
 		var b1h = $('#box1').height();
@@ -26,22 +31,33 @@
 		var b5h = $('#box5').height();
 		var b6h = $('#box6').height();
 		var b8h = $('#box8').height();
+		var b9h = $('#box9').height();
+		var b10h = $('#box10').height();
+		var b14h = $('#box14').height();
 
 		// pos
 		$('#box2').css('left','33.33%');
 		$('#box3').css('top',b1h+'px');
-		$('#box4').css('left','33.33%');
 		$('#box4').css('top',b2h+'px');
-		$('#box5').css('top',(b1h+b3h)+'px');
+		$('#box5').css('left','33.33%');
+		$('#box5').css('top',b2h+'px');
 		$('#box6').css('left','66.67%');
-		$('#box6').css('top',(b1h+b3h)+'px');
-		$('#box7').css('left','66.67%');
-		$('#box7').css('top',(b1h+b3h+b6h)+'px');
-		$('#box8').css('top',(b1h+b3h+b5h)+'px');
-		$('#box9').css('left','66.67%');
-		$('#box9').css('top',(b1h+b3h+b5h)+'px');
+		$('#box6').css('top',b2h+'px');
+		$('#box7').css('left','33.33%');
+		$('#box7').css('top',(b2h+b6h)+'px');
+		$('#box8').css('top',(b2h+b4h)+'px');
+		$('#box9').css('left','33.33%');
+		$('#box9').css('top',(b2h+b4h)+'px');
+		$('#box10').css('top',(b2h+b4h+b8h)+'px');
+		$('#box11').css('top',(b2h+b4h+b9h)+'px');
+		$('#box11').css('left','33.33%');
+		$('#box12').css('top',(b2h+b4h+b9h)+'px');
+		$('#box12').css('left','66.67%');
+		$('#box13').css('top',(b2h+b4h+b8h+b10h)+'px');
+		$('#box14').css('top',(b2h+b4h+b8h+b10h)+'px');
+		$('#box14').css('left','33.33%');
 		
-		contentH = b1h+b3h+b5h+b8h
+		contentH = b2h+b4h+b8h+b10h+b14h;
 		$('#frch-footer').css('top', contentH-3)	
 		
 		// init
@@ -62,7 +78,7 @@
 	<div class="box" id="box1">
     	<div class="overlay" onclick="location.href='#hospitality';">
         	<div class="text">
-        		<h3>Personalizing the experience for every guest.</h3>
+        		<h3>Personalize the experience for every guest.</h3>
                 <h5>HOSPITALITY</h5> 
             </div> 
             <div class="bg"></div>   
@@ -73,53 +89,13 @@
     	<div class="overlay" onclick="location.href='#retail';">
         	<div class="text">
         		<h3>Often the smallest details make all the difference.</h3>
-                <h5>LUXURY RETAIL</h5> 
+                <h5>RETAIL</h5> 
             </div> 
             <div class="bg"></div>   
         </div>
         <img src="_img/ret_liverpool_veracruz.jpg" />
     </div>
-    <div class="box" id="box3">
-    	<div class="overlay" onclick="location.href='#hospitality';">
-        	<div class="text">
-        		<h3>Exquisite spaces invite you to relax and stay awhile.</h3>
-                <h5>HOSPITALITY</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-		<img src="_img/hosp_sway3.jpg" />
-    </div>
-    <div class="box" id="box4">
-    	<div class="overlay" onclick="location.href='#architecture';">
-        	<div class="text">
-        		<h3>Our strategic approach to planning creates meaningful and relevant connections.</h3>
-                <h5>MASTER PLANNING / ARCHITECTURE</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_foxwoods.jpg" />
-    </div>
-    <div class="box" id="box5">
-    	<div class="overlay"  onclick="location.href='#architecture';">
-        	<div class="text">
-        		<h3>Vibrant public spaces have the power to transform communities.</h3>
-                <h5>MASTER PLANNING / ARCHITECTURE</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_ovation.jpg" />
-    </div>
-    <div class="box" id="box6">
-    	<div class="overlay"  onclick="location.href='#retail';">
-        	<div class="text">
-        		<h3>We dare to dream with our eyes wide open.</h3>
-                <h5>LUXURY RETAIL</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/ret_tiffany.jpg" />
-    </div>
-    <div class="box" id="box7">
+    <div class="box" id="box3" onclick="location.href='#architecture';">
     	<!--
     	<div class="overlay">
         	<div class="text">
@@ -129,9 +105,117 @@
             <div class="bg"></div>   
         </div>
         -->
-    	<img src="_img/quote_smallblock.jpg" />
+    	<img src="_img/quote_lead.png" />
+    </div>
+    <div class="box" id="box4">
+    	<div class="overlay" onclick="location.href='#hospitality';">
+        	<div class="text">
+        		<h3>Exquisite spaces invite you to relax and stay awhile.</h3>
+                <h5>HOSPITALITY</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+		<img src="_img/hosp_sway3.jpg" />
+    </div>
+    <div class="box" id="box5">
+    	<div class="overlay"  onclick="location.href='#retail';">
+        	<div class="text">
+        		<h3>We dare to dream with our eyes wide open.</h3>
+                <h5>RETAIL</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/ret_tiffany.jpg" />
+    </div>
+    <div class="box" id="box6" onclick="location.href='#architecture';">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_greatprojects.png" />
+    </div>
+    <div class="box" id="box7">
+    	<div class="overlay" onclick="location.href='#planning';">
+        	<div class="text">
+        		<h3>Our strategic approach to planning creates meaningful and relevant connections.</h3>
+                <h5>MASTER PLANNING</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_foxwoods.jpg" />
+    </div>
+    <div class="box" id="box8" onclick="location.href='#architecture';">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_collaboration.png" />
+    </div>
+    <div class="box" id="box9">
+    	<div class="overlay"  onclick="location.href='#planning';">
+        	<div class="text">
+        		<h3>Vibrant public spaces have the power to transform communities.</h3>
+                <h5>MASTER PLANNING</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_ovation.jpg" />
+    </div>
+    <div class="box" id="box10">
+    	<div class="overlay"  onclick="location.href='#food';">
+        	<div class="text">
+        		<h3>Every moment is an oppotunity to engage the senses.</h3>
+                <h5>FOOD & BEVERAGE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/food_westin_stmaarten.jpg" />
+    </div>
+    <div class="box" id="box11" onclick="location.href='#architecture';">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_finish.png" />
+    </div>
+    <div class="box" id="box12">
+    	<div class="overlay"  onclick="location.href='#merchandise';">
+        	<div class="text">
+        		<h3>The story is crafted in surprise & delight.</h3>
+                <h5>VISUAL MERCHANDISE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/home_hush.jpg" />
     </div>    
-    <div class="box" id="box8">
+    <div class="box" id="box13" onclick="location.href='#architecture';">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_foundation.png" />
+    </div> 
+    <div class="box" id="box14">
     	<div class="overlay"  onclick="location.href='#food';">
         	<div class="text">
         		<h3>We live to craft extraordinary culinary experiences.</h3>
@@ -140,16 +224,6 @@
             <div class="bg"></div>   
         </div>
     	<img src="_img/food_palate_monoco.jpg" />
-    </div>
-    <div class="box" id="box9">
-    	<div class="overlay"  onclick="location.href='#food';">
-        	<div class="text">
-        		<h3>Every detail is an opportunity to engage the senses.</h3>
-                <h5>FOOD & BEVERAGE</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/food_westin_stmaarten.jpg" />
     </div>
     
     

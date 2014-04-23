@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	isHome = false;
+	
+	function setBox() {		
+		//widths
+		$('#box1').css('width','66.67%');
+		$('#box2').css('width','33.33%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','66.67%')
+		$('#box5').css('width','66.67%')
+		$('#box6').css('width','33.33%')
+		$('#box7').css('width','66.67%')
+		$('#box8').css('width','66.67%')
+		$('#box9').css('width','33.33%')
+		$('#box10').css('width','33.33%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b4h = $('#box4').height();
+		var b5h = $('#box5').height();
+		var b6h = $('#box6').height();
+		var b8h = $('#box8').height();
+		var b9h = $('#box9').height();
+		
+		// pos
+		$('#box2').css('left','66.67%');
+		$('#box3').css('top',b1h+'px');
+		$('#box4').css('left','33.33%');
+		$('#box4').css('top',b1h+'px');
+		$('#box5').css('top',(b1h+b4h)+'px');
+		$('#box5').css('left','33.33%');
+		$('#box6').css('top',(b1h+b3h)+'px');
+		$('#box7').css('left','33.33%');
+		$('#box7').css('top',(b1h+b4h+b5h)+'px');		
+		$('#box8').css('top',(b1h+b3h+b6h)+'px');
+		$('#box9').css('left','66.67%');
+		$('#box9').css('top',(b1h+b3h+b6h)+'px');
+		$('#box10').css('left','66.67%');
+		$('#box10').css('top',(b1h+b3h+b6h+b9h)+'px');
+		
+		contentH = b1h+b3h+b6h+b8h
+		$('#frch-footer').css('top', contentH-3)	
+		
+		// init
+		if(isInit){
+			build();			
+		}
+	}
+	
+	boxSubnav();
+
+</script>
+
+</head>
+
+<body>
+<div id="frch-content">
+	<div class="box" id="box1" name="ovation">
+    	<div class="overlay" rel="detail-ovation.html">
+        	<div class="text">
+           		<h3>Riverfront Vision</h3>
+                <h5>OVATION</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_ovation.jpg" />
+    </div>
+    <div class="box" id="box2" name="tropicana">
+    	<div class="overlay" rel="detail-tropicana.html">
+        	<div class="text">
+            	<h3>Tip Top Trop</h3>
+        		<h5>TROPICANA</h5>            
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/arch_tropicana.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_vibrant.png" />
+    </div>
+    <div class="box" id="box4" name="foxwoods">
+    	<div class="overlay" rel="detail-foxwoods.html">
+        	<div class="text">
+            	<h3>Enlivening a Resort</h3>
+        		<h5>FOXWOODS</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_foxwoods.jpg" />
+    </div>
+    <div class="box" id="box5" name="trincity">
+    	<div class="overlay" rel="detail-trincity.html">
+        	<div class="text">
+            	<h3>A Grand Plan</h3>
+        		<h5>TRINCITY MALL</h5>            	
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_trincity_mall.jpg" />
+    </div>
+    <div class="box" id="box6" name="lotte">
+    	<div class="overlay" rel="detail-lotte.html">
+        	<div class="text">
+            	<h3>Redefining the Lap of Luxury</h3>
+        		<h5>LOTTE</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_lotte.jpg" />
+    </div>
+    <div class="box" id="box7" name="dubai-seaworld">
+    	<div class="overlay" rel="detail-seaworld.html">
+        	<div class="text">
+            	<h3>Pure Delight in Dubai</h3>
+        		<h5>DUBAI SEAWORLD: <br />BUSCH'S WORLD OF DISCOVERY</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_seaworld.jpg" />
+    </div>    
+    <div class="box" id="box8" name="lgcenter">
+    	<div class="overlay" rel="detail-lgcenter.html">
+        	<div class="text">
+            	<h3> Entertainment Beacon</h3>
+        		<h5>LG CENTER</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_lg_center.jpg" />
+    </div>
+    <div class="box" id="box9" name="mgm">
+    	<div class="overlay" rel="detail-sirens.html">
+        	<div class="text">
+            	<h3>The Siren’s Call</h3>
+        		<h5>MGM/MIRAGE T.I. HOTEL & CASINO</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/arch_sirens.jpg" />
+    </div>
+    <div class="box" id="box10">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>LIVERPOOL VERACRUZ</h3>
+            	<a rel="detail-temp.html');" href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_ideas.png" />
+    </div>
+
+</div>
+
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="javascript:void();" onclick="window.open('http://www.frch.com', '_system');">FRCH.COM</a></div>
+</div>
+
+</body>
+</html>

@@ -51,12 +51,16 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 
 /* Direction Nav */
 .flex-direction-nav li {list-style: none;}
-.flex-direction-nav li a {width: 40%; height: 90%; margin: 0; display: block; position: absolute; top: 0%; cursor: pointer; text-indent: -9999px; }
-.flex-direction-nav li .flex-next {background-position: 0 0; right: 0px;}
-.flex-direction-nav li .flex-next:hover {/*background-position: 0 -132px;*/}
-.flex-direction-nav li .flex-prev {background-position: 0 -100px; left: 0px;}
-.flex-direction-nav li .flex-prev:hover {/*background-position: 0 -44px;*/}
-.flex-direction-nav li .flex-disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
+.flex-direction-nav li a {width: 20%; height: calc(100% - 29px); margin: 0; display: block; position: absolute; top: 0%; cursor: pointer; text-indent: -9999px; }
+/* for architecture gallery */
+.arch-gallery .flex-direction-nav li a {width: 20%; height: 100%; margin: 0; display: block; position: absolute; top: 0%; cursor: pointer; text-indent: -9999px; }
+
+.flex-direction-nav li .flex-next {right: 0px;}
+.flex-direction-nav li .flex-next:hover {background: url('../_img/icon_next.png') no-repeat; background-position: right center;}
+.flex-direction-nav li .flex-prev {left: 0px;}
+.flex-direction-nav li .flex-prev:hover {background: url('../_img/icon_back.png') no-repeat; background-position: left center;}
+.flex-direction-nav li .flex-disabled {display: none; cursor: default;}
+.arch-gallery .flex-direction-nav li .flex-disabled {display: none; cursor: default;}
 
 /* Control Nav */
 .flex-control-nav {width: 100%; position: relative; bottom: -5px; text-align: center;}

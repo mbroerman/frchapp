@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	isHome = false;
+
+	function setBox() {
+	
+		//$('#first-about').addClass('subnavselected');			
+		
+		contentH = $('.box').height();
+		$('#frch-footer').css('top', contentH-3)	
+		
+		// init
+		if(isInit){
+			build();
+			/*
+			setTimeout(function(){
+				anchor_arr[0] = $('#about-who').offset().top;
+				anchor_arr.push($('#about-what').offset().top);
+				anchor_arr.push($('#about-clients').offset().top);
+				anchor_arr.push($('#about-leadership').offset().top)
+			}, 500);
+			*/
+			setTimeout(function(){
+				setAbout();				
+			}, 500);	
+				
+		}
+	}
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<div id="frch-content" class="about-content">
+	<div class="box">
+        <div id="about-who">
+            <div class="inside">
+                <h2>Who We Are</h2>
+                <p>FRCH is a multi-disciplinary design firm specializing in Retail Strategy, Interior Design, Graphic Design, and
+        Architecture. Headquartered in Cincinnati, Ohio and with offices in New York City, Chicago and San Francisco,
+        we are one of the largest independently held design firms in the country. We employ over 185 employees and
+        have 46 years of experience and a ward winning recognition for serving the Retail, Food & Beverage, and
+        Hospitality industries.</p>
+            </div>
+        </div>
+        
+        <div id="about-what">
+            <div class="inside">
+                <h2>What We Do</h2>
+                <div class="group-holder">
+                    <div class="what-group">                        
+                        <ul>
+                        	<h4>RETAIL STRATEGY</h4>
+                            <li>Opportunities Assessment</li>
+                            <li>Competitive Audit & Assessment</li>
+                            <li>Brand Audit and Analysis</li>
+                            <li>Consumer Research</li>
+                            <li>Brand Character Development</li>
+                            <li>Image / Positioning Strategies</li>
+                            <li>Name Generation</li>
+                            <li>Blue Sky Ideation</li>
+                        </ul>
+                    </div>
+                    <div class="what-group">                        
+                        <ul>
+                        	<h4>INTERIOR DESIGN</h4>
+                            <li>Planning and Design</li>
+                            <li>Concept Development</li>
+                            <li>Fixture / Furniture Design</li>
+                            <li>Merchandise Planning</li>
+                            <li>Visual Merchandising</li>
+                            <li>Lighting Design</li>
+                            <li>Resource Design</li>
+                        </ul>
+                    </div>
+                    <div class="what-group">                        
+                        <ul>
+                        	<h4>GRAPHIC DESIGN</h4>
+                            <li>Logo & Identity Systems</li>
+                            <li>Brand Communication Systems</li>
+                            <li>Brand Standards & Guidelines</li>
+                            <li>Print Design</li>
+                            <li>Packaging Design</li>
+                            <li>Interior Signage Programs</li>
+                            <li>Exterior Storefront Signage</li>
+                            <li>Wayfinding Systems</li>
+                        </ul>
+                    </div>
+                    <div class="what-group">                        
+                        <ul>
+                        	<h4>ARCHITECTURE</h4>
+                            <li>Site Survey</li>
+                            <li>Due Diligence</li>
+                            <li>Concept Development</li>
+                            <li>Master Planning</li>
+                            <li>Architectural Design</li>
+                            <li>Construction Documentation</li>
+                            <li>Construction Administration</li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+    	</div>
+        
+        <div id="about-photo">
+        	<img src="_img/about_photo.jpg" />
+        </div>
+        
+        <div id="about-clients">
+            <div class="inside">
+                <h2>FRCH is proud to list some of the world’s leading brands as our long-standing clients</h2>
+                <div class="group-holder">
+                    <div class="client-group">                        
+                        <ul>
+                            <li>Apple</li>
+                            <li>Aveda</li>
+                            <li>Busch Ent ertainment</li>
+                            <li>Boca Restaurant Group</li>
+                            <li>Brown-Forman</li>
+                            <li>Charles Schwab</li>
+                            <li>Disney Global Store Design</li>
+                            <li>Foxwoods Resort Casino</li>
+                            <li>Gaylord Entertainment</li>
+                            <li>General Growth Properties</li>
+                            <li>Godiva Chocolatier</li>
+                        </ul>
+                    </div>
+                    <div class="client-group">                        
+                        <ul>
+                            <li>Harley-Davidson</li>
+                            <li>Helzberg Diamonds</li>
+                            <li>Hilton Worldwide</li>
+                            <li>Hyatt</li>
+                            <li>Hyundai Dept. Stores</li>
+                            <li>Judith Leiber</li>
+                            <li>Liverpool, Mexico</li>
+                            <li>Lotte Dept. Stores</li>
+                            <li>Luxottica Group</li>
+                            <li>Macy’s, Inc.</li>
+                            <li>Marriott</li>
+                        </ul>
+                    </div>
+                    <div class="client-group">                        
+                        <ul>
+                            <li>Mary Norton</li>
+                            <li>MGM Mirage</li>
+                            <li>Neutrogena</li>
+                            <li>Proctor & Gamble</li>
+                            <li>Samsung</li>
+                            <li>Sunglass Hut</li>
+                            <li>Starbucks</li>
+                            <li>Tiffany & Co.</li>
+                            <li>Volkswagen</li>
+                            <li>Westin Hotels & Resorts</li>
+                            <li>Wolverine Worldwide</li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+    	</div>
+        
+         <div id="about-why">
+            <div class="inside">
+                <h2>Why We Do It</h2>
+                <p>We believe in the power of design to drive preference, loyalty, and success for each of
+our client’s and their distinct products, environments, and services. We design to inspire,
+inform and motivate consumers, we design to generate smart business solutions that are
+responsive to your goals and objectives. As a firm of creative, strategic and forwards-thinking
+individuals, we are passionate about differentiating our clients in the marketplace and
+in the mind of the consumer.</p>
+            </div>
+        </div>
+        
+        <div id="about-leadership">
+            <div class="inside">
+                <h2>Leadership</h2>
+                <div class="leadership-group">                        
+                    <ul>
+                        <li>
+                        	<div class="image"><img src="_img/headshot_lechleiter.jpg" /></div>
+                            <div class="text">
+                            	<h3>Paul Lechleiter</h3>
+                                <h5>CHIEF CREATIVE OFFICER</h5>
+                                <p>
+                                As Chief Creative Officer, Paul is responsible for the o verall strategic and creative direction of
+FRCH as well as advancing the creative culture, talent and processes across the firm. Paul also champions both cross-studio and cross-discipline collaboration programs firm-wide, designed to bring more strategic perspective and creative diversity to our client’s business solutions.
+                                </p>
+                                <p class="caption">
+                                	Tiffany & Co, Luxottica Retail, Yum! Brands, McDonalds, Gaylord Entertainment Opry Originals, Discovery Channel,
+Busch Entertainment, Harley-Davidson, Hershey’s Chocolate World, Dick’s Sporting Goods, Macy’s, and American Girl.
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                        	<div class="image"><img src="_img/headshot_horwitz.jpg" /></div>
+                            <div class="text">
+                            	<h3>Tom Horwitz</h3>
+                                <h5>EXECUTIVE VICE PRESIDENT</h5>
+                                <p>
+                                Tom has held FRCH studio leadership positions in the retail, hospitality and restaurant divisions of the company, providing leadership for client relationships with requirements ranging from brand consulting and image positioning to the creative and technical disciplines of planning, design,graphic communications and architecture. Tom’s strength is his knowledge of consumer markets, and his ability to deliver results that are market attuned, tighly managed and fiscally reponsible.
+                                </p>
+                                <p class="caption">
+                                	Discovery Channel, Disney Store, Eddie Bauer, Foxwoods Resort Casino, Hampton Inn, Starbucks, and Timberland.
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                        	<div class="image"><img src="_img/headshot_stapleton.jpg" /></div>
+                            <div class="text">
+                            	<h3>James Stapleton</h3>
+                                <h5>AIA, PRINCIPAL, OPERATIONS MANAGER</h5>
+                                <p>
+                                While living in Los Angeles, James got his first taste of hospitality experience designing a restaurant for
+Steve Wynn at the Mir age in 1996. Designed a Westin Hotel interior in 1997. Left town soon after (his wife made him). Started work at FRCH in 1998. Became a founding member of the Hospitality Studio in 2000. Now almost 13 years later he’s led projects in almost every hotel type from select service to oceanfront resorts and mega resort casinos in Las Vegas. Occasionally he still designs a piece of furniture.
+                                </p>
+                                <p class="caption">
+                                	Bellagio Resort & Casino, Columbia Sussex, Hyatt, Fifth Third, Foxwoods Casino Resort, Marriott Grand Dunes Resort
+and Spa, MGM/MIRAGE: Monte Carlo Casino Resort, The Mirage: Renoir Five Star Restaurant, Renaissance, Ritz Carlton,
+Tropicana Mega Resort, Westin: Dawn Beach Resort & Spa, St. MaartenWestin: Las Vegas, and University of Cincinnati:
+Nippert Stadium Skybox & Suites Addition.
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                        	<div class="image"><img src="_img/headshot_kim.jpg" /></div>
+                            <div class="text">
+                            	<h3>HeeSun Kim</h3>
+                                <h5>VICE PRESIDENT, CREATIVE MANAGING DIRECTOR</h5>
+                                <p>
+                               Heesun is a true creative force and leader in the global retail industry and an editorial board
+member of design:retail magazine. Combining her passion for art, philosophy and design has enabled Heesun to complete successful retail concepts ranging from specialty brand to department stores across the globe over her 15 years of experience. She lives by her personal mantra "Art is where the design process begins."
+                                </p>
+                                <p class="caption">
+                                	Lotte Department Stores, Liverpool, Hyundai, Lladro, Siman, Blackberry, Samsung, Macy's, Target, TJX, Kohl’s Luxottica, Coca Cola, and Whole Foods
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                        	<div class="image"><img src="_img/headshot_novak.jpg" /></div>
+                            <div class="text">
+                            	<h3>Robyn Novak</h3>
+                                <h5>VICE PRESIDENT, CREATIVE MANAGING DIRECTOR</h5>
+                                <p>
+                                As a design leader on the development of multiple domestic and international brand experiences, Robyn creates retail environments that leverage consumer insights and progressive design thinking. She leads a team of retail strategists and designers to develop unique experiences ranging from first generation retail to scalable design solutions for some of the world’s biggest brands. From retail strategy through conceptual design and documentation Robyn’s philosophy is to master form and function in every design solution. She integrates documentation and resource design partners to insure design intent is maintained throughout the design process.
+                                </p>
+                                <p class="caption">
+                                	Tiffany & Co., Luxottica, Aveda, O Boticario, Macy’s, Procter & Gamble, J. Crew, UltraFemme, Mercedes Benz, Stride Rite, Centro, Johnson & Johnson, Hush Puppies, Sprint, Baskin-Robbins and Corner Bakery Café.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="javascript:void();" onclick="window.open('http://www.frch.com', '_system');">FRCH.COM</a></div>
+</div>
+
+
+</body>
+</html>

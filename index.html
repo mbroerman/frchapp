@@ -4,7 +4,9 @@
 <title>FRCH | Design Worldwide</title>
 
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--<meta name="viewport" content="width=1000, user-scalable=yes" />-->
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="shortcut icon" href="favicon.png" />
 <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png" />
@@ -17,6 +19,7 @@
 <script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
 <script type="text/javascript" src="_js/jquery.easing.compatibility.js"></script>
 <script type="text/javascript" src="_js/scrollfix.js"></script>
+<script type="text/javascript" src="_js/is-mobile.js"></script>
 
 <link rel="stylesheet" href="_js/flexslider.css" type="text/css" media="screen">
 <script type="text/javascript" src="_js/jquery.flexslider-min.js"></script>
@@ -34,7 +37,13 @@
 		if (evt.pathNames[0]){
 			//load info page
 			loadContent(pathName+'.html')			
-			$('#nav-'+pathName).addClass('navselected');			
+			$('#nav-'+pathName).addClass('navselected');	
+			
+			if(pathName == "architecture"){		
+				isArchitecture = true;
+			} else {
+				isArchitecture = false;	
+			}
 		} else {
 			//load default page			
 			loadContent('home.html')			
@@ -63,6 +72,10 @@
 	var scrollPos;
 	var isContact = false;
 	var detailOpen;
+	var isArchitecture = false;
+	var anchor_arr = [0,0,0,0];
+	var currentSlide = 1;
+	var totalSlide = 0;
 
 	//-----------------------
 	// main pages
@@ -85,13 +98,13 @@
 	}
 	
 	function loadContent(target) {
-			//$('#loader').show();	
+			$('#loader').show();	
 			$('#frch-holder').hide();
 			$('#frch-holder').load(target, function() {		
 				// Loaded	
 				$('#frch-holder').show();
 				//$(window).resize();	
-				findImages();	
+				findImages();
 			});
 	}
 	
@@ -107,30 +120,105 @@
 	}
 	
 	function loadNextImage(source) {	
-		if(imagesLoad >= imagesLoad_arr.length) {		
+		if(imagesLoad >= imagesLoad_arr.length) {			
 			// wait for all images to load then execute
-			//$('#loader').hide();
+			$('#loader').hide();
+			
 			if(source == 'main'){										
 				$(window).resize();	
 				
 				setTimeout(function(){
 					$('#frch-footer').show();
-				}, 10);						
+				}, 10);							
 							
-			} else if (source == "detail") {
-				// set gallery		
-				$('.flexslider').flexslider({
-					animation: "slide",
-					slideshow: true, 
-					slideshowSpeed: 5000, 
-					animationLoop: false,
-					keyboardNav: true,
-					directionNav: false,
-					touch: true,
-					start: function() {
-						
-					}	
-				});
+			} else if (source == "detail") {				
+				// set gallery	
+				if(isArchitecture){	
+					if(isMobile){
+						// for architcture slides
+						$('.flexslider').flexslider({
+							animation: "slide",
+							slideshow: true, 
+							slideshowSpeed: 5000,
+							animationLoop: false,
+							keyboardNav: true,
+							directionNav: false,
+							controlNav: false,	// for architcture slides
+							touch: true,
+							start: function(slider){							  
+							  totalSlide = slider.count;
+							  $('#image-count').html('1 of '+totalSlide);	
+							  $('#replay').click(function(){
+								  slider.flexAnimate(0,true,true); // back to 0 bug 
+							  });								  
+							},
+							after: function(slider){
+							  currentSlide = slider.currentSlide+1;
+							  $('#image-count').html(currentSlide+' of '+totalSlide);
+								/*
+							  if(currentSlide < totalSlide){
+							  	$('#replay').css('visibility','hidden');
+							  } else {
+								$('#replay').css('visibility','visible');	
+							  }
+							  */
+							}
+						});
+					} else {
+						// for architcture slides
+						$('.flexslider').flexslider({
+							animation: "slide",
+							slideshow: true, 
+							slideshowSpeed: 5000,
+							animationLoop: false,
+							keyboardNav: true,
+							directionNav: true,
+							controlNav: false,	// for architcture slides
+							touch: true,
+							start: function(slider){							  
+							  totalSlide = slider.count;
+							  $('#image-count').html('1 of '+totalSlide);	
+							  $('#replay').click(function(){
+								  slider.flexAnimate(0,true,true); // back to 0 bug 
+							  });								  
+							},
+							after: function(slider){
+							  currentSlide = slider.currentSlide+1;
+							  $('#image-count').html(currentSlide+' of '+totalSlide);
+								/*
+							  if(currentSlide < totalSlide){
+							  	$('#replay').css('visibility','hidden');
+							  } else {
+								$('#replay').css('visibility','visible');	
+							  }
+							  */
+							}
+						});
+					}
+					
+				} else {
+					if(isMobile){
+						$('.flexslider').flexslider({
+							animation: "slide",
+							slideshow: true, 
+							slideshowSpeed: 5000,
+							animationLoop: false,
+							keyboardNav: true,
+							directionNav: false,
+							touch: true
+						});
+					} else {
+						$('.flexslider').flexslider({
+							animation: "slide",
+							slideshow: true, 
+							slideshowSpeed: 5000,
+							animationLoop: false,
+							keyboardNav: true,
+							directionNav: true,
+							touch: true	
+						});
+					}
+				}
 				
 				// sizes popup
 				//$(window).resize();		
@@ -150,8 +238,8 @@
 				}, 210)
 			
 				setTimeout(function() {					
-					$('#frch-detail-bg').css({'opacity':0.8}).on('transitionend', function(e) {
-						if($(this).css('opacity') >= 0.8){
+					$('#frch-detail-bg').css({'opacity':1}).on('transitionend', function(e) {
+						if($(this).css('opacity') >= 1){
 							$(this).off('transitionend');							
 						}
 					})				
@@ -164,7 +252,7 @@
 						}
 					})				
 				},100);
-	
+				
 			}
 	
 		} else {
@@ -185,6 +273,7 @@
 		var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 		var isSafari = navigator.userAgent.indexOf('Safari') > -1;	
 		
+		
 		setTimeout(function() {			
 			$('.box').each(function() {	
 				$(this).show();	
@@ -192,31 +281,65 @@
 				overlay.bind('click', function(){
 					loadDetail($(this).attr('rel'));
 				});	
-						
-				// css transition		
-				$(this).mouseover(function() {
-					overlay.show();
-					setTimeout(function() {
-						overlay.css({'opacity':1}).on('transitionend', function(e) {
-							if($(this).css('opacity') == 1){
-								console.trace(1);
+				
+				if(isMobile){
+					// for mobile
+					overlay.hide();
+					$(this).click(function() {	
+						overlay.show();
+						setTimeout(function() {
+							overlay.css({'opacity':1}).on('transitionend', function(e) {
+								if($(this).css('opacity') == 1){
+									$(this).off('transitionend');
+								}
+							})
+						},1);
+	
+					}).mouseleave(function() {					
+						//overlay.css('opacity',0);
+						overlay.css({'opacity':0}).on('transitionend', function(e) {
+							if($(this).css('opacity') == 0){
+								$(this).off('transitionend');								
+								// iPad hover bug
+								$(this).css('display','none');
+								/*
+								$(this).css('opacity', 0.2)
+								setTimeout(function() {
+									$(this).hide();
+								},1);
+								*/
+							}					
+						});
+	
+	
+					});	
+				} else {					
+					// for desktop		
+					$(this).mouseenter(function() {	
+						overlay.css('visibility','visible');
+						setTimeout(function() {
+							overlay.css({'opacity':1}).on('transitionend', function(e) {
+								if($(this).css('opacity') == 1){
+									$(this).off('transitionend');
+								}
+							})
+						},1);
+	
+					}).mouseleave(function() {					
+						//overlay.css('opacity',0);
+						overlay.css({'opacity':0}).on('transitionend', function(e) {
+							if($(this).css('opacity') == 0){
 								$(this).off('transitionend');
+								$(this).css('visibility','hidden');
 							}
-						})
-					},1);
-					//setTimeout(function() {overlay.css('opacity',1)},2);
-				}).mouseleave(function() {					
-					//overlay.css('opacity',0);
-					overlay.css({'opacity':0}).on('transitionend', function(e) {
-						if($(this).css('opacity') == 0){
-							console.trace(0);
-							$(this).off('transitionend');
-							overlay.hide();
-						}
-												
-					});
-					//setTimeout(function() {overlay.hide();},250)
-				});	
+													
+						});
+	
+	
+					});	
+					
+				}
+		
 				
 				$(this).css('z-index',i+100);
 				
@@ -244,15 +367,12 @@
 	
 	function loadDetail(target) {
 		
-		//$('#loader').show();		
+		$('#loader').show();		
 		
 		$('#frch-detail').hide();
 		$('#frch-detail').load(target, function(data) {			
 			// Loaded
 			findDetailImages();
-		
-			//$('#loader').hide();			
-
 						
 		});
 	}
@@ -293,7 +413,6 @@
 			}
 		});
 
-		
 	}
 	
 	function subnavDetail(target) {
@@ -315,10 +434,32 @@
 		
 	}
 	
+	function setAbout() {
+		anchor_arr[0] = 106
+		anchor_arr[1] = $('#about-who').height() + 176
+		anchor_arr[2] = $('#about-who').height() + $('#about-what').height() + $('#about-photo').height() + 246
+		anchor_arr[3] = $('#about-who').height() + $('#about-what').height() + $('#about-photo').height() + $('#about-clients').height() + $('#about-why').height() + 386	
+	}
+	
+	function setPhase() {
+		$('.phase-scroll').height(screenW*.5);	
+	}
+	
+	function boxSubnav() {
+		// subnav
+		$('.box').each(function() {	
+			$(this).children('.overlay').bind('click', function() {
+				var n = $(this).parent().attr('name')
+				$('.subnavselected').removeClass('subnavselected');
+				$('.subnav').find('[name='+n+']').addClass('subnavselected');			
+			})
+		})	
+	}
+	
 	//----------------------
 	// init
 
-	$(document).ready(function() {		
+	$(document).ready(function() {	
 		// nav
 		$('#mainnav').each(function() {	
 			$(this).find('a').bind('click', function() {
@@ -334,13 +475,27 @@
 		});
 	
 		// subnav
-		$('.subnav li').each(function() {	
+		$('.subnav li').not('.about-subnav li').each(function() {	
 			$(this).find('a').bind('click', function() {
 				$('.subnavselected').removeClass('subnavselected');
 				$(this).addClass('subnavselected');
 				subnavDetail($(this).attr('rel'));				
 			})
-		});				
+		});	
+		
+		// about subnav anchors
+		$('.about-subnav li').each(function() {				
+			$(this).find('a').bind('click', function() {
+				$('.subnavselected').removeClass('subnavselected');
+				$(this).addClass('subnavselected');
+				
+				var anch = anchor_arr[$(this).parent().index()];
+				
+				$('#frch-holder').stop().animate({
+					scrollTop: anch-106
+				}, 750, 'easeOutExpo');	
+			})
+		});			
 	
 		// contact popup
 		$('.contact-name').click(function() {
@@ -383,6 +538,7 @@
 		new ScrollFix(scrollingSidebar);
 		
 		$(window).resize();
+	
 		
 	});
 	
@@ -401,6 +557,8 @@
 		
 		// for loaded content
 		setBox();
+		setAbout();setPhase();
+		setPhase();
 
 	});
 	
@@ -423,7 +581,7 @@
 	<h4>PAUL R. LECHLEITER</h4>
     Chief Creative Officer<br />
     513-362-3334<br />
-    <a href="mailto:plechleiter@frch.com">plechleiter@frch.com.com</a><br /><br />
+    <a href="mailto:plechleiter@frch.com">plechleiter@frch.com</a><br /><br />
     
     <h4>TOM HORWITZ</h4>
     Executive Vice President<br />
@@ -451,47 +609,71 @@
 	<ul id="mainnav">
     	<li><a id="nav-retail" href="#retail">RETAIL</a>
         <li><a id="nav-hospitality" href="#hospitality">HOSPITALITY</a>
-        <li><a id="nav-architecture" href="#architecture">MASTER PLANNING/ARCHITECTURE</a>
+        <li><a id="nav-planning" href="#planning">MASTER PLANNING</a>
+        <li><a id="nav-architecture" href="#architecture">AOR PROCESS</a>
         <li><a id="nav-food" href="#food">FOOD & BEVERAGE</a>
+        <li><a id="nav-merchandise" href="#merchandise">VISUAL</a>
+        <li><a id="nav-about" href="#about">ABOUT</a>
     </ul>    
 </div>
 <div id="frch-subnav">
 	<ul id="sub-retail" class="subnav">
-    	<li><a href="javascript:void();" rel="detail-liverpool-veracruz.html">LIVERPOOL VERACRUZ</a></li>
-        <li><a href="javascript:void();" rel="detail-tiffany.html">TIFFANY & CO.</a></li>
-        <li><a href="javascript:void();" rel="detail-hyundai-shinchon.html">HYUNDAI</a></li>
-        <li><a href="javascript:void();" rel="detail-judith-leiber.html">JUDITH LEIBER</a></li>
-        <li><a href="javascript:void();" rel="detail-mary-norton.html">MARY NORTON</a></li>
-        <li><a href="javascript:void();" rel="detail-liverpool-dutyfree.html">LIVERPOOL DUTY FREE</a></li>
+    	<li><a href="javascript:void();" rel="detail-liverpool-veracruz.html" name="liverpool">LIVERPOOL</a></li>
+        <li><a href="javascript:void();" rel="detail-tiffany-retail.html" name="tiffany">TIFFANY & CO.</a></li>
+        <li><a href="javascript:void();" rel="detail-judith-leiber.html" name="judith-leiber">JUDITH LEIBER</a></li>
+        <li><a href="javascript:void();" rel="detail-mary-norton.html" name="mary-norton">MARY NORTON</a></li>
+        <li><a href="javascript:void();" rel="detail-liverpool-dutyfree.html" name="liverpool-duty-free">LIVERPOOL DUTY FREE</a></li>
     </ul>  
     
-	<ul id="sub-architecture" class="subnav">
-    	<li><a href="javascript:void();" rel="detail-seaworld.html">DUBAI SEAWORLD</a></li>
-        <li><a href="javascript:void();" rel="detail-foxwoods.html">FOXWOODS</a></li>
-        <li><a href="javascript:void();" rel="detail-lgcenter.html">LG CENTER</a></li>
-        <li><a href="javascript:void();" rel="detail-ovation.html">OVATION</a></li>
-        <li><a href="javascript:void();" rel="detail-sirens.html">MGM/T.I.</a></li>
-        <li><a href="javascript:void();" rel="detail-trincity.html">TRINCITY MALL</a></li>
-        <li><a href="javascript:void();" rel="detail-tropicana.html">TROPICANA</a></li>
-    </ul>  
+	<ul id="sub-planning" class="subnav">
+    	<li><a href="javascript:void();" rel="detail-seaworld.html" name="dubai-seaworld">DUBAI SEAWORLD</a></li>
+        <li><a href="javascript:void();" rel="detail-foxwoods.html" name="foxwoods">FOXWOODS</a></li>
+        <li><a href="javascript:void();" rel="detail-lgcenter.html" name="lgcenter">LG CENTER</a></li>
+        <li><a href="javascript:void();" rel="detail-ovation.html" name="ovation">OVATION</a></li>
+        <li><a href="javascript:void();" rel="detail-lotte.html" name="lotte">LOTTE</a></li>
+        <li><a href="javascript:void();" rel="detail-sirens.html" name="mgm">MGM/T.I.</a></li>
+        <li><a href="javascript:void();" rel="detail-trincity.html" name="trincity">TRINCITY MALL</a></li>
+        <li><a href="javascript:void();" rel="detail-tropicana.html" name="tropicana">TROPICANA</a></li>
+    </ul> 
+    
+    <ul id="sub-architecture" class="subnav">
+        <li><a href="javascript:void();" rel="detail-architecture-process.html" name="process">PROCESS</a></li>
+        <li><a href="javascript:void();" rel="detail-architecture-documentation.html" name="documentation">DESIGN TO DOCUMENTATION</a></li>
+        <li><a href="javascript:void();" rel="detail-architecture-infrastructure.html" name="infrastructure">INFRASTRUCTURE</a></li>
+        <li><a href="javascript:void();" rel="detail-architecture-phasing.html" name="phasing">PHASING</a></li>
+        <li><a href="javascript:void();" rel="detail-architecture-experience.html" name="experience">EXPERIENCE STRATEGY</a></li>
+    </ul> 
     
     <ul id="sub-hospitality" class="subnav">
-    	<li><a href="javascript:void();" rel="detail-hotel-32.html">HOTEL 32</a></li>
-        <li><a href="javascript:void();" rel="detail-hyatt-denver.html">HYATT DENVER</a></li>
-        <li><a href="javascript:void();" rel="detail-sway.html">SWAY</a></li>
-        <li><a href="javascript:void();" rel="detail-whim-borgata.html">WHIM</a></li>
-        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html">WESTIN ST. MAARTEN</a></li>
+    	<li><a href="javascript:void();" rel="detail-hotel-32.html" name="hotel-32">HOTEL 32</a></li>
+        <li><a href="javascript:void();" rel="detail-hyatt-denver.html" name="hyatt-denver">HYATT DENVER</a></li>
+        <li><a href="javascript:void();" rel="detail-sway.html" name="sway">SWAY</a></li>
+        <li><a href="javascript:void();" rel="detail-whim-borgata.html" name="whim">WHIM</a></li>
+        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html" name="westin-stmaarten">WESTIN ST. MAARTEN</a></li>
     </ul>
     
     <ul id="sub-food" class="subnav">
-    	<li><a href="javascript:void();" rel="detail-boca.html">BOCA</a></li>
-        <li><a href="javascript:void();" rel="detail-dolce.html">DOLCE</a></li>
-        <li><a href="javascript:void();" rel="detail-dubai.html">BUSCH'S DUBAI</a></li>
-        <li><a href="javascript:void();" rel="detail-palate-cannes.html">PALATE CANNES</a></li>
-        <li><a href="javascript:void();" rel="detail-palate-monaco.html">PALATE MONACO</a></li>
-        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html">WESTIN ST. MAARTEN</a></li>
-        <li><a href="javascript:void();" rel="detail-yellowtail.html">YELLOWTAIL</a></li>
+    	<li><a href="javascript:void();" rel="detail-boca.html" name="boca">BOCA</a></li>
+        <li><a href="javascript:void();" rel="detail-seaworld-food.html" name="dubai-seaworld">DUBAI SEAWORLD</a></li>
+        <li><a href="javascript:void();" rel="detail-palate-cannes.html" name="palate-cannes">PALATE CANNES</a></li>
+        <li><a href="javascript:void();" rel="detail-palate-monaco.html" name="palate-monaco">PALATE MONACO</a></li>
+        <li><a href="javascript:void();" rel="detail-westin-stmaarten.html" name="westin-stmaarten">WESTIN ST. MAARTEN</a></li>
+        <li><a href="javascript:void();" rel="detail-yellowtail.html" name="yellowtail">YELLOWTAIL</a></li>
     </ul> 
+    
+    <ul id="sub-merchandise" class="subnav">
+        <li><a href="javascript:void();" rel="detail-tiffany-merch.html" name="tiffany">TIFFANY & CO.</a></li>
+        <li><a href="javascript:void();" rel="detail-hush-puppies.html" name="hush-puppies">HUSH PUPPIES</a></li>
+        <li><a href="javascript:void();" rel="detail-neutrogena.html" name="neutrogena">NEUTROGENA</a></li>
+        <li><a href="javascript:void();" rel="detail-iridesse.html" name="iridesse">IRIDESSE</a></li>
+    </ul>
+    
+    <ul id="sub-about" class="subnav about-subnav">
+        <li><a href="javascript:void();" rel="about-who" id="first-about">WHO WE ARE</a></li>
+        <li><a href="javascript:void();" rel="about-what">WHAT WE DO</a></li>
+        <li><a href="javascript:void();" rel="about-clients">WHO WE DO IT FOR</a></li>
+        <li><a href="javascript:void();" rel="about-leadership">LEADERSHIP</a></li>
+    </ul>
 </div>
 
 <!-- detail popup -->
@@ -500,6 +682,22 @@
 
 <!-- box holder -->
 <div id="frch-holder"></div>
+
+</body>
+</html>
+ml>
+</html>
+html>
+-->
+<div id="frch-detail"></div>
+<div id="frch-detail-bg"></div>
+
+<!-- box holder -->
+<div id="frch-holder"></div>
+
+</body>
+</html>
+er"></div>
 
 </body>
 </html>

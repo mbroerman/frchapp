@@ -8,16 +8,11 @@
 	
 	function setBox() {		
 		//widths
-		$('#box1').css('width','66.67%');
-		$('#box2').css('width','33.33%')
-		$('#box3').css('width','33.33%')
-		$('#box4').css('width','66.67%')
-		$('#box5').css('width','66.67%')
-		$('#box6').css('width','33.33%')
-		$('#box7').css('width','66.67%')
-		$('#box8').css('width','66.67%')
-		$('#box9').css('width','33.33%')
-		$('#box10').css('width','33.33%')
+		$('#box1').css('width','100%');
+		$('#box2').css('width','100%');
+		$('#box3').css('width','100%');
+		$('#box4').css('width','100%');
+		$('#box5').css('width','100%');
 		
 		//heights
 		var b1h = $('#box1').height();
@@ -25,27 +20,14 @@
 		var b3h = $('#box3').height();
 		var b4h = $('#box4').height();
 		var b5h = $('#box5').height();
-		var b6h = $('#box6').height();
-		var b8h = $('#box8').height();
-		var b9h = $('#box9').height();
 		
 		// pos
-		$('#box2').css('left','66.67%');
-		$('#box3').css('top',b1h+'px');
-		$('#box4').css('left','33.33%');
-		$('#box4').css('top',b1h+'px');
-		$('#box5').css('top',(b1h+b4h)+'px');
-		$('#box5').css('left','33.33%');
-		$('#box6').css('top',(b1h+b3h)+'px');
-		$('#box7').css('left','33.33%');
-		$('#box7').css('top',(b1h+b4h+b5h)+'px');		
-		$('#box8').css('top',(b1h+b3h+b6h)+'px');
-		$('#box9').css('left','66.67%');
-		$('#box9').css('top',(b1h+b3h+b6h)+'px');
-		$('#box10').css('left','66.67%');
-		$('#box10').css('top',(b1h+b3h+b6h+b9h)+'px');
+		$('#box2').css('top',b1h+'px');
+		$('#box3').css('top',(b1h+b2h)+'px');
+		$('#box4').css('top',(b1h+b2h+b3h)+'px');
+		$('#box5').css('top',(b1h+b2h+b3h+b4h)+'px');
 		
-		contentH = b1h+b3h+b6h+b8h
+		contentH = b1h+b2h+b3h+b4h+b5h
 		$('#frch-footer').css('top', contentH-3)	
 		
 		// init
@@ -53,118 +35,67 @@
 			build();			
 		}
 	}
+	
+	boxSubnav();
 
 </script>
 
 </head>
 
 <body>
-<div id="frch-content">
-	<div class="box" id="box1">
-    	<div class="overlay" rel="detail-ovation.html">
+<div id="frch-content" class="arch-content">
+	<div class="box" id="box1" name="process">
+    	<div class="overlay" rel="detail-architecture-process.html">
         	<div class="text">
-           		<h3>Riverfront Vision</h3>
-                <h5>OVATION</h5>  
+           		<h3>We Finish What We Start, Quickly</h3>
+                <h5>We are constantly focused on the next item in the Critical Path for delivering a great solution aligned to our clients goals. You will never have to drag us to the finish line, we are always focused on the next step and the finish line. Unfinished, un-open facilities don’t drive revenue. Successful projects have successful finishes. We’re more than self-starters, we’re self-finishers.</h5>  
             </div> 
             <div class="bg"></div>   
         </div>
-    	<img src="_img/arch_ovation.jpg" />
+    	<img src="_img/aor_process.png" />
     </div>
-    <div class="box" id="box2">
-    	<div class="overlay" rel="detail-tropicana.html">
+    <div class="box" id="box2" name="documentation">
+    	<div class="overlay" rel="detail-architecture-documentation.html">
         	<div class="text">
-            	<h3>Tip Top Trop</h3>
-        		<h5>TROPICANA</h5>            
+           		<h3>Great Projects Have Great Everything</h3>
+                <h5>Great projects are more than just great design. Great projects must also be defined by great documents and great specs – where these comprehensive solutions are delivered on-budget and on-time. Design and document coordination, at both the macro and micro levels, is the key to getting it all right the first time. And none of our clients have the time, money or patience to retrench major decisions or to open late.</h5>  
             </div> 
             <div class="bg"></div>   
         </div>
-        <img src="_img/arch_tropicana.jpg" />
+    	<img src="_img/aor_documentation.png" />
     </div>
-    <div class="box" id="box3">
-    	<!--
-    	<div class="overlay">
+   <div class="box" id="box3" name="infrastructure">
+    	<div class="overlay" rel="detail-architecture-infrastructure.html">
         	<div class="text">
-        		<h3>WESTIN ST. MAARTEN</h3>
-            	<a href="javascript:void();" class="button">VIEW</a>   
+           		<h3>We Can Lead Or Follow, But Prefer To Lead!</h3>
+                <h5>We like the Project Leadership role and we think we’re pretty good at it. We have the breadth, depth and experience to genuinely be responsible for numerous important and simultaneous roles. We excel at big projects with big teams and big goals. Our clients appreciate our ability to maintain, balance and advance a complex agenda, while keeping it very organized and efficient for them.</h5>  
             </div> 
             <div class="bg"></div>   
         </div>
-        -->
-    	<img src="_img/quote_tallblock.jpg" />
+    	<img src="_img/aor_infrastructure.png" />
     </div>
-    <div class="box" id="box4">
-    	<div class="overlay" rel="detail-foxwoods.html">
+    <div class="box" id="box4" name="phasing">
+    	<div class="overlay" rel="detail-architecture-phasing.html">
         	<div class="text">
-            	<h3>Enlivening a Resort</h3>
-        		<h5>FOXWOODS</h5>
+           		<h3>Collaboration Is Both An Art & A Science</h3>
+                <h5>AOR and Master Planning Project Leaders have a complex role or chestrating the combined efforts of numerous consultants within a fast-paced environment. The Creative Agenda must be carefully balanced with the Schedule and Budget realities. True success doesn’t have casualties or compromises. The
+balanced formula for leadership and collaboration-focused success includes being fair, consistent, honest, and likeable while ultimately being on-target, on-budget and on-schedule.</h5>  
             </div> 
             <div class="bg"></div>   
         </div>
-    	<img src="_img/arch_foxwoods.jpg" />
+    	<img src="_img/aor_phasing.png" />
     </div>
-    <div class="box" id="box5">
-    	<div class="overlay" rel="detail-trincity.html">
+    <div class="box" id="box5" name="experience">
+    	<div class="overlay" rel="detail-architecture-experience.html">
         	<div class="text">
-            	<h3>A Grand Plan</h3>
-        		<h5>TRINCITY MALL</h5>            	
+           		<h3>The Foundation of Success</h3>
+                <h5>Before we put pen to paper, before the experience is scripted and the fixtures are or dered... there is a strategy-collaboration effort to uncover in valuable consumer insights and distill them into an actionable approach that will help bring your Brand essence to life.</h5>  
             </div> 
             <div class="bg"></div>   
         </div>
-    	<img src="_img/arch_trincity_mall.jpg" />
+    	<img src="_img/aor_experience.png" />
     </div>
-    <div class="box" id="box6">
-    	<div class="overlay" rel="detail-lotte.html">
-        	<div class="text">
-            	<h3>Redefining the Lap of Luxury</h3>
-        		<h5>LOTTE</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_lotte.jpg" />
-    </div>
-    <div class="box" id="box7">
-    	<div class="overlay" rel="detail-seaworld.html">
-        	<div class="text">
-            	<h3>Pure Delight in Dubai</h3>
-        		<h5>DUBAI SEAWORLD</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_seaworld.jpg" />
-    </div>    
-    <div class="box" id="box8">
-    	<div class="overlay" rel="detail-lgcenter.html">
-        	<div class="text">
-            	<h3> Entertainment Beacon</h3>
-        		<h5>LG CENTER SEOUL</h5>
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_lg_center.jpg" />
-    </div>
-    <div class="box" id="box9">
-    	<div class="overlay" rel="detail-sirens.html">
-        	<div class="text">
-            	<h3>The Siren’s Call</h3>
-        		<h5>MGM/MIRAGE T.I. HOTEL & CASINO</h5> 
-            </div> 
-            <div class="bg"></div>   
-        </div>
-    	<img src="_img/arch_sirens.jpg" />
-    </div>
-    <div class="box" id="box10">
-    	<!--
-    	<div class="overlay">
-        	<div class="text">
-        		<h3>LIVERPOOL VERACRUZ</h3>
-            	<a rel="detail-temp.html');" href="javascript:void();" class="button">VIEW</a>   
-            </div> 
-            <div class="bg"></div>   
-        </div>
-        -->
-    	<img src="_img/quote_smallblock.jpg" />
-    </div>
-
+    
 </div>
 
 <div id="frch-footer">

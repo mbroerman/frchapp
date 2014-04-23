@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+	isInit = true;	
+	isHome = false;
+	
+	function setBox() {
+		//widths
+		$('#box1').css('width','66.67%');
+		$('#box2').css('width','33.33%')
+		$('#box3').css('width','33.33%')
+		$('#box4').css('width','33.33%')
+		$('#box5').css('width','33.33%')
+		$('#box6').css('width','66.67%')
+		$('#box7').css('width','66.67%')
+		$('#box8').css('width','33.33%')
+		$('#box9').css('width','33.33%')
+		$('#box10').css('width','66.67%')
+		
+		//heights
+		var b1h = $('#box1').height();
+		var b2h = $('#box2').height();
+		var b3h = $('#box3').height();
+		var b5h = $('#box5').height();
+		var b7h = $('#box7').height();
+		var b9h = $('#box9').height();
+		
+		// pos
+		$('#box2').css('left','66.67%');
+		$('#box3').css('left','66.67%');
+		$('#box3').css('top',b2h+'px');
+		$('#box4').css('left','66.67%');
+		$('#box4').css('top',(b2h+b3h)+'px');
+		$('#box5').css('top',b1h+'px');
+		$('#box6').css('left','33.33%');
+		$('#box6').css('top',b1h+'px');
+		$('#box7').css('top',(b1h+b5h)+'px');
+		$('#box8').css('top',(b1h+b5h)+'px');
+		$('#box8').css('left','66.67%');
+		$('#box9').css('top',(b1h+b5h+b7h)+'px');
+		$('#box10').css('left','33.33%');
+		$('#box10').css('top',(b1h+b5h+b7h)+'px');
+		
+		contentH = b1h+b5h+b7h+b9h
+		$('#frch-footer').css('top', contentH-3)	
+		
+		// init
+		if(isInit){
+			build();			
+		}
+	}
+	
+	boxSubnav();
+
+</script>
+
+
+</head>
+
+<body>
+<!--
+<div id="frch-subnav">
+	<ul id="subnav">
+    	<li><a href="javascript:void();" rel="detail-liverpool-veracruz.html">LIVERPOOL VERACRUZ</a></li>
+        <li><a href="javascript:void();" rel="detail-tiffany.html">TIFFANY & CO.</a></li>
+        <li><a href="javascript:void();" rel="detail-hyundai-shinchon.html">HYUNDAI</a></li>
+        <li><a href="javascript:void();" rel="detail-judith-leiber.html">JUDITH LEIBER</a></li>
+        <li><a href="javascript:void();" rel="detail-mary-horton.html">MARY HORTON</a></li>
+        <li><a href="javascript:void();" rel="detail-liverpool-dutyfree.html">LIVERPOOL DUTY FREE</a></li>
+    </ul>  
+</div>
+-->
+
+<div id="frch-content">
+	<div class="box" id="box1" name="tiffany">
+    	<div class="overlay" rel="detail-tiffany-merch.html" >
+        	<div class="text">
+            	<h3>Reimagining an Icon</h3>
+        		<h5>TIFFANY & CO.</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/merch_tiffany.jpg" />
+    </div>
+    <div class="box" id="box2" name="hush-puppies">
+    	<div class="overlay" rel="detail-hush-puppies.html">
+        	<div class="text">
+            	<h3>Refined Lifestyle Narratives</h3>
+        		<h5>HUSH PUPPIES</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        <img src="_img/merch_hush.jpg" />
+    </div>
+    <div class="box" id="box3">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_transcend.png" />
+    </div>
+    <div class="box" id="box4" name="neutrogena">
+    	<div class="overlay" rel="detail-neutrogena.html">
+        	<div class="text">
+            	<h3>Clarifying the Science of Beauty</h3>
+        		<h5>NEUTROGENA</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/merch_neutrogena.jpg" />
+    </div>
+    <div class="box" id="box5" name="tiffany">
+    	<div class="overlay" rel="detail-tiffany-merch.html">
+        	<div class="text">
+            	<h3>Celebrating the Perfect Gem</h3>
+        		<h5>TIFFANY & CO.</h5> 
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/merch_tiffany2.jpg" />
+    </div>
+    <div class="box" id="box6" name="hush-puppies">
+    	<div class="overlay" rel="detail-hush-puppies.html');">
+        	<div class="text">
+            	<h3>Authentic Brand Notions</h3>
+        		<h5>HUSH PUPPIES</h5>  
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/merch_hush2.jpg" />
+    </div>
+    <div class="box" id="box7">
+    	<!--
+    	<div class="overlay">
+        	<div class="text">
+        		<h3>WESTIN ST. MAARTEN</h3>
+            	<a href="javascript:void();" class="button">VIEW</a>   
+            </div> 
+            <div class="bg"></div>   
+        </div>
+        -->
+    	<img src="_img/quote_rich.png" />
+    </div>    
+    <div class="box" id="box8" name="iridesse">
+    	<div class="overlay" rel="detail-iridesse.html">
+        	<div class="text">
+            	<h3>Tailored Pearls</h3>
+        		<h5>IRIDESSE</h5>
+            </div> 
+            <div class="bg"></div>   
+        </div>
+    	<img src="_img/merch_iridesse.jpg" />
+    </div>
+    
+</div>
+<div id="frch-footer">
+	<div>FRCH<span></span>311 Elm Street, Suite 600 Cincinnati, OH 45202<span></span>(513) 241-3000<span></span><a href="javascript:void();" onclick="window.open('http://www.frch.com', '_system');">FRCH.COM</a></div>
+</div>
+
+</body>
+</html>

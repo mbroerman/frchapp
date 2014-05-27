@@ -348,7 +348,7 @@ a[href^=tel]{
 	position: fixed;
 	top: 44px;
 	width: 110%;
-	height: 34px;
+	height: 40px;
 	background: #222222;
 	z-index: 800;
 	overflow: hidden;
@@ -366,16 +366,24 @@ a[href^=tel]{
 	
 	 #mainnav li {
 		float: left;
-		margin-right: 29px;	 
+		/*margin-right: 29px;	*/ 
+		margin-right: 22px;
 	 }
 	 
 	 #mainnav li a {
 		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		color: #666666;
+		line-height: 39px;
+		letter-spacing: 1px; 
+		 /* old
+		 
+		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
 		font-size: 10px;
-		/*font-weight: 700;*/
 		color: #666666;
 		line-height: 34px;
 		letter-spacing: 1px; 
+		*/
 	 }
 	 
 	 	#mainnav li a:hover, #mainnav li a:active {
@@ -383,13 +391,17 @@ a[href^=tel]{
 			color: #ffffff;	
 		}
 		
-		.navselected, .subnavselected {
+		.navselected {
 			color: #ffffff !important;	
+		}
+		
+		.subnavselected {
+			color: #bad001 !important;	
 		}
 		
 #frch-subnav {
 	position: fixed;
-	top: 76px;
+	top: 80px;
 	width: 100%;
 	height: 0px;
 	background: #444444;
@@ -399,7 +411,7 @@ a[href^=tel]{
 }
 
 	.subopen {
-		height: 30px !important;
+		height: 40px !important;
 		
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transition: height .5s cubic-bezier(0,.6,.4,1);
@@ -424,17 +436,24 @@ a[href^=tel]{
 	 }
 	 
 	 .subnav li a {
+		 font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		color: #ffffff;
+		line-height: 39px;
+		letter-spacing: 1px;
+		 /* old
+		 
 		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
 		font-size: 9px;
-		/*font-weight: 700;*/
 		color: #777777;
 		line-height: 30px;
 		letter-spacing: 1px; 
+		*/
 	 }
 	 
 	 	.subnav li a:hover, .subnav li a:active {
 			text-decoration: none;
-			color: #ffffff;	
+			color: #bad001;	
 		}
 	
 #frch-holder {
@@ -442,7 +461,7 @@ a[href^=tel]{
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 106px;	
+	top: 120px;	
 	z-index: 600;
 	-webkit-overflow-scrolling:touch;
 	overflow-y: scroll;
@@ -709,6 +728,15 @@ a[href^=tel]{
 		width: 100%;
 		height: auto;	
 	}
+	
+	#about-where {
+		background: #ffffff;
+		padding: 40px 0 30px 0;	
+	}
+	
+		#about-where h2 {
+			margin-bottom: 30px;
+		}
 		
 	#about-clients {
 		background: #ffffff;
@@ -751,9 +779,65 @@ a[href^=tel]{
 		padding: 40px 0 30px 0;	
 	}
 	
+	#about-awards {
+		background: #000000;
+		padding: 40px 0 30px 0;	
+	}
+	
+		#about-awards h2 {
+			color: #ffffff;
+			margin-bottom: 20px;
+		}
+		
+		#about-awards h3 {
+			font-family: 'Gotham-Book', Arial, Helvetica, sans-serif;	
+			font-size: 24px;
+			color: #999999;
+			line-height:28px;
+			font-style: normal;
+			margin-bottom: 5px;
+		}
+		
+		#about-awards .group-holder {
+			margin-left: -30px;	
+		}
+	
+		.awards-group {
+			float: left;
+			width: 49%;
+			
+			font-family: 'Gotham-Book', Arial, Helvetica, sans-serif;	
+			font-size: 15px;
+			color: #ffffff;
+			line-height: 20px;
+			
+			margin-top: 5px;
+			margin-bottom: 30px;
+		}
+		
+			.awards-group strong {
+				font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;		
+				font-weight: normal;
+			}
+		
+			.awards-group ul, .awards-group li {
+				margin: 0;
+				padding: 0;
+				list-style: disc;	
+			}
+		
+			.awards-group ul {
+				padding-left: 30px;	
+				margin-left: 20px;
+			}
+			
+			.awards-group li {
+				padding: 0px 0 8px 0;	
+			}
+	
 	#about-leadership {
 		background: #ffffff;
-		padding: 40px 0 100px 0;	
+		padding: 40px 0 30px 0;	
 	}
 	
 		.leadership-group {
@@ -814,6 +898,66 @@ a[href^=tel]{
 			color: #000000;
 			line-height:18px;
 		}
+		
+	#about-team {
+		background: #dddddd;
+		padding: 40px 0 100px 0;	
+	}
+	
+		#about-team h2 {
+		}
+		
+		#about-team h3 {
+			font-family: 'Gotham-Book', Arial, Helvetica, sans-serif;	
+			font-size: 24px;
+			color: #999999;
+			line-height:28px;
+			font-style: normal;
+			margin-bottom: 5px;
+		}
+		
+		#about-team .group-holder {
+			margin-left: -30px;	
+		}
+		
+		.team-group {
+			float: left;
+			width: 49%;
+			
+			font-family: 'Gotham-Book', Arial, Helvetica, sans-serif;	
+			font-size: 15px;
+			color: #333333;
+			line-height: 20px;
+			
+			margin-top: 5px;
+			margin-bottom: 30px;
+		}
+		
+			.team-group strong {
+				font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
+				font-weight: normal;		
+			}
+		
+			.team-group ul, .team-group li {
+				margin: 0;
+				padding: 0;
+				list-style: disc;	
+			}
+		
+			.team-group ul {
+				padding-left: 30px;	
+				margin-left: 20px;
+			}
+			
+				.team-group ul ul {	
+					padding: 0;
+					margin-left: 20px;
+					margin-top: 10px;
+				}
+			
+			.team-group li {
+				padding: 0px 0 8px 0;	
+			}
 	
 	
 /* DETAIL */
@@ -840,7 +984,7 @@ a[href^=tel]{
 	display: none;
 	position: fixed;
 	
-	top: 106px;
+	top: 120px;
 	width: 100%;
 	height: 100%;
 	background: #000000;
@@ -858,7 +1002,7 @@ a[href^=tel]{
 	display: none;
 	position: fixed;
 	/*margin-top: 30px;*/
-	top: 106px;
+	top: 120px;
 	left: 0;
 	
 	width: 100%;

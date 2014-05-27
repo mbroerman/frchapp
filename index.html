@@ -435,10 +435,37 @@
 	}
 	
 	function setAbout() {
-		anchor_arr[0] = 106
-		anchor_arr[1] = $('#about-who').height() + 176
-		anchor_arr[2] = $('#about-who').height() + $('#about-what').height() + $('#about-photo').height() + 246
-		anchor_arr[3] = $('#about-who').height() + $('#about-what').height() + $('#about-photo').height() + $('#about-clients').height() + $('#about-why').height() + 386	
+		anchor_arr[0] = 120
+		anchor_arr[1] = 
+			$('#about-who').height() + 196
+		anchor_arr[2] = 
+			$('#about-who').height() + 
+			$('#about-what').height() + 
+			$('#about-why').height() + 406
+		anchor_arr[3] = 
+			$('#about-who').height() + 
+			$('#about-what').height() + 
+			$('#about-photo').height() +
+			$('#about-why').height() +
+			$('#about-where').height() +
+			$('#about-clients').height() + 476
+		anchor_arr[4] = 
+			$('#about-who').height() + 
+			$('#about-what').height() + 
+			$('#about-photo').height() +
+			$('#about-why').height() +
+			$('#about-where').height() +
+			$('#about-clients').height() +
+			$('#about-awards').height() + 546
+		anchor_arr[5] = 
+			$('#about-who').height() + 
+			$('#about-what').height() + 
+			$('#about-photo').height() +
+			$('#about-why').height() +
+			$('#about-where').height() +
+			$('#about-clients').height() +
+			$('#about-awards').height() +
+			$('#about-leadership').height() + 280
 	}
 	
 	function setPhase() {
@@ -490,9 +517,8 @@
 				$(this).addClass('subnavselected');
 				
 				var anch = anchor_arr[$(this).parent().index()];
-				
 				$('#frch-holder').stop().animate({
-					scrollTop: anch-106
+					scrollTop: anch-120
 				}, 750, 'easeOutExpo');	
 			})
 		});			
@@ -545,14 +571,14 @@
 	$(window).resize(function() {
 		screenW = $(document).width();
 		screenH = $(document).height();
-		$('#frch-detail').css('height', screenH-106);		
-		$('#frch-detail-bg').css('height', screenH-106);
+		$('#frch-detail').css('height', screenH-120);		
+		$('#frch-detail-bg').css('height', screenH-120);
 		if(isHome){
-			$('#frch-holder').css('height', screenH-76);
-			$('#frch-holder').css('top', 76);
+			$('#frch-holder').css('height', screenH-80);
+			$('#frch-holder').css('top', 80);
 		} else {
-			$('#frch-holder').css('height', screenH-106);
-			$('#frch-holder').css('top', 106);
+			$('#frch-holder').css('height', screenH-120);
+			$('#frch-holder').css('top', 120);
 		}
 		
 		// for loaded content
@@ -569,11 +595,25 @@
 
 </script>
 
+<!-- google analytics -->
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-2082611-62");
+    pageTracker._trackPageview();
+    } catch(err) {}
+  </script>
+
 
 </head>
 
 <body>
-<!--<div id="loader"></div>-->
+<!--
+<div id="loader"></div>
+-->
 <!-- contact popup -->
 <div id="frch-contact">
 	<div class="pointer"></div>
@@ -626,13 +666,13 @@
     </ul>  
     
 	<ul id="sub-planning" class="subnav">
-    	<li><a href="javascript:void();" rel="detail-seaworld.html" name="dubai-seaworld">DUBAI SEAWORLD</a></li>
+    	<li><a href="javascript:void();" rel="detail-seaworld.html" name="dubai-seaworld">SEAWORLD</a></li>
         <li><a href="javascript:void();" rel="detail-foxwoods.html" name="foxwoods">FOXWOODS</a></li>
         <li><a href="javascript:void();" rel="detail-lgcenter.html" name="lgcenter">LG CENTER</a></li>
         <li><a href="javascript:void();" rel="detail-ovation.html" name="ovation">OVATION</a></li>
         <li><a href="javascript:void();" rel="detail-lotte.html" name="lotte">LOTTE</a></li>
         <li><a href="javascript:void();" rel="detail-sirens.html" name="mgm">MGM/T.I.</a></li>
-        <li><a href="javascript:void();" rel="detail-trincity.html" name="trincity">TRINCITY MALL</a></li>
+        <li><a href="javascript:void();" rel="detail-trincity.html" name="trincity">TRINCITY</a></li>
         <li><a href="javascript:void();" rel="detail-tropicana.html" name="tropicana">TROPICANA</a></li>
     </ul> 
     
@@ -654,7 +694,7 @@
     
     <ul id="sub-food" class="subnav">
     	<li><a href="javascript:void();" rel="detail-boca.html" name="boca">BOCA</a></li>
-        <li><a href="javascript:void();" rel="detail-seaworld-food.html" name="dubai-seaworld">DUBAI SEAWORLD</a></li>
+        <li><a href="javascript:void();" rel="detail-seaworld-food.html" name="dubai-seaworld">SEAWORLD</a></li>
         <li><a href="javascript:void();" rel="detail-palate-cannes.html" name="palate-cannes">PALATE CANNES</a></li>
         <li><a href="javascript:void();" rel="detail-palate-monaco.html" name="palate-monaco">PALATE MONACO</a></li>
         <li><a href="javascript:void();" rel="detail-westin-stmaarten.html" name="westin-stmaarten">WESTIN ST. MAARTEN</a></li>
@@ -671,8 +711,10 @@
     <ul id="sub-about" class="subnav about-subnav">
         <li><a href="javascript:void();" rel="about-who" id="first-about">WHO WE ARE</a></li>
         <li><a href="javascript:void();" rel="about-what">WHAT WE DO</a></li>
-        <li><a href="javascript:void();" rel="about-clients">WHO WE DO IT FOR</a></li>
+        <li><a href="javascript:void();" rel="about-where">WHERE WE WORK</a></li>
+        <li><a href="javascript:void();" rel="about-awards">AWARDS & MEDIA</a></li>
         <li><a href="javascript:void();" rel="about-leadership">LEADERSHIP</a></li>
+        <li><a href="javascript:void();" rel="about-team">OUR TEAM</a></li>
     </ul>
 </div>
 

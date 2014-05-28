@@ -435,9 +435,9 @@
 	}
 	
 	function setAbout() {
-		anchor_arr[0] = 120
+		anchor_arr[0] = 106
 		anchor_arr[1] = 
-			$('#about-who').height() + 196
+			$('#about-who').height() + 186
 		anchor_arr[2] = 
 			$('#about-who').height() + 
 			$('#about-what').height() + 
@@ -448,7 +448,7 @@
 			$('#about-photo').height() +
 			$('#about-why').height() +
 			$('#about-where').height() +
-			$('#about-clients').height() + 476
+			$('#about-clients').height() + 466
 		anchor_arr[4] = 
 			$('#about-who').height() + 
 			$('#about-what').height() + 
@@ -456,7 +456,7 @@
 			$('#about-why').height() +
 			$('#about-where').height() +
 			$('#about-clients').height() +
-			$('#about-awards').height() + 546
+			$('#about-awards').height() + 536
 		anchor_arr[5] = 
 			$('#about-who').height() + 
 			$('#about-what').height() + 
@@ -465,7 +465,7 @@
 			$('#about-where').height() +
 			$('#about-clients').height() +
 			$('#about-awards').height() +
-			$('#about-leadership').height() + 280
+			$('#about-leadership').height() + 270
 	}
 	
 	function setPhase() {
@@ -571,14 +571,14 @@
 	$(window).resize(function() {
 		screenW = $(document).width();
 		screenH = $(document).height();
-		$('#frch-detail').css('height', screenH-120);		
-		$('#frch-detail-bg').css('height', screenH-120);
+		$('#frch-detail').css('height', screenH-106);		
+		$('#frch-detail-bg').css('height', screenH-106);
 		if(isHome){
-			$('#frch-holder').css('height', screenH-80);
-			$('#frch-holder').css('top', 80);
+			$('#frch-holder').css('height', screenH-76);
+			$('#frch-holder').css('top', 76);
 		} else {
-			$('#frch-holder').css('height', screenH-120);
-			$('#frch-holder').css('top', 120);
+			$('#frch-holder').css('height', screenH-106);
+			$('#frch-holder').css('top', 106);
 		}
 		
 		// for loaded content

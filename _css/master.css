@@ -630,6 +630,11 @@ a[href^=tel]{
 		
 }
 
+	.about-content strong {
+		font-family: 'Gotham-Bold', Arial, Helvetica, sans-serif;
+		font-weight: normal;		
+	}
+
 	.about-content .box:hover {
 		cursor: default;	
 	}
